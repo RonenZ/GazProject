@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GazDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StreetName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+    <Property Name="ApartmentNumber" Type="Int32" Nullable="false" />
+    <Property Name="latitude" Type="Single" Nullable="false" />
+    <Property Name="longitude" Type="Single" Nullable="false" />
+    <NavigationProperty Name="Counters" Relationship="Self.FK_Counters_Addresses" FromRole="Addresses" ToRole="Counters" />
+  </EntityType>
+  <EntityType Name="CounterRead">
+    <Key>
+      <PropertyRef Name="ReadID" />
+    </Key>
+    <Property Name="ReadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CounterID" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReadAmount" Type="Single" Nullable="false" />
+    <NavigationProperty Name="Counter" Relationship="Self.FK_CounterReads_Counters" FromRole="CounterReads" ToRole="Counters" />
+  </EntityType>
+  <EntityType Name="Counter">
+    <Key>
+      <PropertyRef Name="CounterID" />
+    </Key>
+    <Property Name="CounterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_Counters_Addresses" FromRole="Counters" ToRole="Addresses" />
+    <NavigationProperty Name="CounterReads" Relationship="Self.FK_CounterReads_Counters" FromRole="Counters" ToRole="CounterReads" />
+    <NavigationProperty Name="User_Counter_Reference" Relationship="Self.FK_User_Counter_Reference_Counters" FromRole="Counters" ToRole="User_Counter_Reference" />
+    <NavigationProperty Name="UserBills" Relationship="Self.FK_UserBills_Counters" FromRole="Counters" ToRole="UserBills" />
+    <NavigationProperty Name="UserComplaints" Relationship="Self.FK_UserComplaints_Counters" FromRole="Counters" ToRole="UserComplaints" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_Counter_Reference">
+    <Key>
+      <PropertyRef Name="CounterID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="CounterID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Counter" Relationship="Self.FK_User_Counter_Reference_Counters" FromRole="User_Counter_Reference" ToRole="Counters" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Counter_Reference_Users" FromRole="User_Counter_Reference" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserBill">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillAmount" Type="Single" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CounterID" Type="Int32" Nullable="false" />
+    <Property Name="Payed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Counter" Relationship="Self.FK_UserBills_Counters" FromRole="UserBills" ToRole="Counters" />
+  </EntityType>
+  <EntityType Name="UserComplaint">
+    <Key>
+      <PropertyRef Name="ComplaintID" />
+    </Key>
+    <Property Name="ComplaintID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComplaintDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CounterID" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Disable" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Counter" Relationship="Self.FK_UserComplaints_Counters" FromRole="UserComplaints" ToRole="Counters" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserComplaints_Users" FromRole="UserComplaints" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserNotification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NotificationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Disabled" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserNotification_Users" FromRole="UserNotification" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserRoles" FromRole="UserRoles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User_Counter_Reference" Relationship="Self.FK_User_Counter_Reference_Users" FromRole="Users" ToRole="User_Counter_Reference" />
+    <NavigationProperty Name="UserComplaints" Relationship="Self.FK_UserComplaints_Users" FromRole="Users" ToRole="UserComplaints" />
+    <NavigationProperty Name="UserNotifications" Relationship="Self.FK_UserNotification_Users" FromRole="Users" ToRole="UserNotification" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_UserRoles" FromRole="Users" ToRole="UserRoles" />
+  </EntityType>
+  <Association Name="FK_Counters_Addresses">
+    <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+    <End Role="Counters" Type="Self.Counter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Counters">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CounterReads_Counters">
+    <End Role="Counters" Type="Self.Counter" Multiplicity="1" />
+    <End Role="CounterReads" Type="Self.CounterRead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counters">
+        <PropertyRef Name="CounterID" />
+      </Principal>
+      <Dependent Role="CounterReads">
+        <PropertyRef Name="CounterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Counter_Reference_Counters">
+    <End Role="Counters" Type="Self.Counter" Multiplicity="1" />
+    <End Role="User_Counter_Reference" Type="Self.User_Counter_Reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counters">
+        <PropertyRef Name="CounterID" />
+      </Principal>
+      <Dependent Role="User_Counter_Reference">
+        <PropertyRef Name="CounterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserBills_Counters">
+    <End Role="Counters" Type="Self.Counter" Multiplicity="1" />
+    <End Role="UserBills" Type="Self.UserBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counters">
+        <PropertyRef Name="CounterID" />
+      </Principal>
+      <Dependent Role="UserBills">
+        <PropertyRef Name="CounterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserComplaints_Counters">
+    <End Role="Counters" Type="Self.Counter" Multiplicity="1" />
+    <End Role="UserComplaints" Type="Self.UserComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counters">
+        <PropertyRef Name="CounterID" />
+      </Principal>
+      <Dependent Role="UserComplaints">
+        <PropertyRef Name="CounterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Counter_Reference_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="User_Counter_Reference" Type="Self.User_Counter_Reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User_Counter_Reference">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserComplaints_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserComplaints" Type="Self.UserComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserComplaints">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserNotification_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UserNotification" Type="Self.UserNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserNotification">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRole" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GazEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="CounterReads" EntityType="Self.CounterRead" />
+    <EntitySet Name="Counters" EntityType="Self.Counter" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="User_Counter_Reference" EntityType="Self.User_Counter_Reference" />
+    <EntitySet Name="UserBills" EntityType="Self.UserBill" />
+    <EntitySet Name="UserComplaints" EntityType="Self.UserComplaint" />
+    <EntitySet Name="UserNotifications" EntityType="Self.UserNotification" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Counters_Addresses" Association="Self.FK_Counters_Addresses">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Counters" EntitySet="Counters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CounterReads_Counters" Association="Self.FK_CounterReads_Counters">
+      <End Role="Counters" EntitySet="Counters" />
+      <End Role="CounterReads" EntitySet="CounterReads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Counter_Reference_Counters" Association="Self.FK_User_Counter_Reference_Counters">
+      <End Role="Counters" EntitySet="Counters" />
+      <End Role="User_Counter_Reference" EntitySet="User_Counter_Reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserBills_Counters" Association="Self.FK_UserBills_Counters">
+      <End Role="Counters" EntitySet="Counters" />
+      <End Role="UserBills" EntitySet="UserBills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserComplaints_Counters" Association="Self.FK_UserComplaints_Counters">
+      <End Role="Counters" EntitySet="Counters" />
+      <End Role="UserComplaints" EntitySet="UserComplaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Counter_Reference_Users" Association="Self.FK_User_Counter_Reference_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="User_Counter_Reference" EntitySet="User_Counter_Reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserComplaints_Users" Association="Self.FK_UserComplaints_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserComplaints" EntitySet="UserComplaints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserNotification_Users" Association="Self.FK_UserNotification_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserNotification" EntitySet="UserNotifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="usp_GetBillForCounter">
+      <Parameter Name="counterID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_GetCounterReadPerPeriod">
+      <Parameter Name="CounterID" Mode="In" Type="Int32" />
+      <Parameter Name="StartTime" Mode="In" Type="DateTime" />
+      <Parameter Name="EndTime" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="usp_GetCountersForUser" ReturnType="Collection(GazDBModel.usp_GetCountersForUser_Result)">
+      <Parameter Name="usrID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_GetLastBillForCounter">
+      <Parameter Name="counterID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_GetOpenBillsForCounter">
+      <Parameter Name="counterID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_GetUserDetails">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_LoginUser">
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="passWord" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="usp_GetCountersForUser_Result">
+    <Property Type="Int32" Name="CounterID" Nullable="false" />
+    <Property Type="Int32" Name="AddressID" Nullable="false" />
+  </ComplexType>
+</Schema>

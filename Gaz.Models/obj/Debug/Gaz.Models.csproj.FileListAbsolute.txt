@@ -1,0 +1,10 @@
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\Gaz.Models.dll.config
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\Gaz.Models.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\Gaz.Models.pdb
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\EntityFramework.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\EntityFramework.SqlServer.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\EntityFramework.xml
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\Debug\EntityFramework.SqlServer.xml
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.pdb
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache

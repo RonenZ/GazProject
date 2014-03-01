@@ -1,0 +1,12 @@
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\obj\Debug\Gaz.DAL.csprojResolveAssemblyReference.cache
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\Gaz.DAL.dll.config
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\Gaz.DAL.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\Gaz.DAL.pdb
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\EntityFramework.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\Gaz.Models.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\Gaz.Models.pdb
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\EntityFramework.xml
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.xml
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\obj\Debug\Gaz.DAL.dll
+e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\obj\Debug\Gaz.DAL.pdb

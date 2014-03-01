@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GazDBModelStoreContainer" CdmEntityContainer="GazEntities1">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="GazDBModel.Address">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CounterReads">
+      <EntityTypeMapping TypeName="GazDBModel.CounterRead">
+        <MappingFragment StoreEntitySet="CounterReads">
+          <ScalarProperty Name="ReadID" ColumnName="ReadID" />
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ReadAmount" ColumnName="ReadAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counters">
+      <EntityTypeMapping TypeName="GazDBModel.Counter">
+        <MappingFragment StoreEntitySet="Counters">
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GazDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Counter_Reference">
+      <EntityTypeMapping TypeName="GazDBModel.User_Counter_Reference">
+        <MappingFragment StoreEntitySet="User_Counter_Reference">
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBills">
+      <EntityTypeMapping TypeName="GazDBModel.UserBill">
+        <MappingFragment StoreEntitySet="UserBills">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="Payed" ColumnName="Payed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserComplaints">
+      <EntityTypeMapping TypeName="GazDBModel.UserComplaint">
+        <MappingFragment StoreEntitySet="UserComplaints">
+          <ScalarProperty Name="ComplaintID" ColumnName="ComplaintID" />
+          <ScalarProperty Name="ComplaintDescription" ColumnName="ComplaintDescription" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Disable" ColumnName="Disable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserNotifications">
+      <EntityTypeMapping TypeName="GazDBModel.UserNotification">
+        <MappingFragment StoreEntitySet="UserNotification">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="NotificationDescription" ColumnName="NotificationDescription" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="GazDBModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="GazDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetBillForCounter" FunctionName="GazDBModel.Store.usp_GetBillForCounter" />
+    <FunctionImportMapping FunctionImportName="usp_GetCounterReadPerPeriod" FunctionName="GazDBModel.Store.usp_GetCounterReadPerPeriod" />
+    <FunctionImportMapping FunctionImportName="usp_GetCountersForUser" FunctionName="GazDBModel.Store.usp_GetCountersForUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GazDBModel.usp_GetCountersForUser_Result">
+          <ScalarProperty Name="CounterID" ColumnName="CounterID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_GetLastBillForCounter" FunctionName="GazDBModel.Store.usp_GetLastBillForCounter" />
+    <FunctionImportMapping FunctionImportName="usp_GetOpenBillsForCounter" FunctionName="GazDBModel.Store.usp_GetOpenBillsForCounter" />
+    <FunctionImportMapping FunctionImportName="usp_GetUserDetails" FunctionName="GazDBModel.Store.usp_GetUserDetails" />
+    <FunctionImportMapping FunctionImportName="usp_LoginUser" FunctionName="GazDBModel.Store.usp_LoginUser" />
+  </EntityContainerMapping>
+</Mapping>
