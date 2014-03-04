@@ -1,0 +1,5 @@
+D:\GitHub\GazProject\GazProjecTests\bin\Debug\GazProjecTests.dll
+D:\GitHub\GazProject\GazProjecTests\bin\Debug\GazProjecTests.pdb
+D:\GitHub\GazProject\GazProjecTests\obj\Debug\GazProjecTests.csprojResolveAssemblyReference.cache
+D:\GitHub\GazProject\GazProjecTests\obj\Debug\GazProjecTests.dll
+D:\GitHub\GazProject\GazProjecTests\obj\Debug\GazProjecTests.pdb

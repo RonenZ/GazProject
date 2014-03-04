@@ -1,0 +1,14 @@
+D:\GitHub\GazProject\GazDalTests\bin\Debug\GazDalTests.dll.config
+D:\GitHub\GazProject\GazDalTests\bin\Debug\GazDalTests.dll
+D:\GitHub\GazProject\GazDalTests\bin\Debug\GazDalTests.pdb
+D:\GitHub\GazProject\GazDalTests\bin\Debug\EntityFramework.dll
+D:\GitHub\GazProject\GazDalTests\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\GazProject\GazDalTests\bin\Debug\Gaz.DAL.dll
+D:\GitHub\GazProject\GazDalTests\bin\Debug\Gaz.Models.dll
+D:\GitHub\GazProject\GazDalTests\bin\Debug\Gaz.DAL.pdb
+D:\GitHub\GazProject\GazDalTests\bin\Debug\Gaz.Models.pdb
+D:\GitHub\GazProject\GazDalTests\bin\Debug\EntityFramework.xml
+D:\GitHub\GazProject\GazDalTests\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.csprojResolveAssemblyReference.cache
+D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.dll
+D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.pdb
