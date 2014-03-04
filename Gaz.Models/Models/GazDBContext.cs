@@ -67,13 +67,21 @@ namespace Gaz.Models.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetCounterReadPerPeriod", counterIDParameter, startTimeParameter, endTimeParameter);
         }
 
+<<<<<<< HEAD
         public virtual ObjectResult<Counter> usp_GetCountersForUser(Nullable<int> usrID)
+=======
+        public virtual ObjectResult<User_Counter> usp_GetCountersForUser(Nullable<int> usrID)
+>>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
         {
             var usrIDParameter = usrID.HasValue ?
                 new ObjectParameter("usrID", usrID) :
                 new ObjectParameter("usrID", typeof(int));
 
+<<<<<<< HEAD
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Counter>("usp_GetCountersForUser", usrIDParameter);
+=======
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Counter>("usp_GetCountersForUser", usrIDParameter);
+>>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
         }
 
         public virtual int usp_GetLastBillForCounter(Nullable<int> counterID)

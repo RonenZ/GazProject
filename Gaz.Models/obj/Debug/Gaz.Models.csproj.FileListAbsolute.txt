@@ -8,6 +8,7 @@ e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\De
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.pdb
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 D:\GitHub\GazProject\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
 D:\GitHub\GazProject\Gaz.Models\obj\Debug\Gaz.Models.dll
 D:\GitHub\GazProject\Gaz.Models\obj\Debug\Gaz.Models.pdb
@@ -18,3 +19,8 @@ D:\GitHub\GazProject\Gaz.Models\bin\Debug\EntityFramework.dll
 D:\GitHub\GazProject\Gaz.Models\bin\Debug\EntityFramework.SqlServer.dll
 D:\GitHub\GazProject\Gaz.Models\bin\Debug\EntityFramework.xml
 D:\GitHub\GazProject\Gaz.Models\bin\Debug\EntityFramework.SqlServer.xml
+=======
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.dll
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.pdb
+>>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
