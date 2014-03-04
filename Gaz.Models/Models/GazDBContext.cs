@@ -68,7 +68,11 @@ namespace Gaz.Models.Models
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public virtual ObjectResult<Counter> usp_GetCountersForUser(Nullable<int> usrID)
+=======
+        public virtual ObjectResult<User_Counter> usp_GetCountersForUser(Nullable<int> usrID)
+>>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
 =======
         public virtual ObjectResult<User_Counter> usp_GetCountersForUser(Nullable<int> usrID)
 >>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
@@ -78,7 +82,11 @@ namespace Gaz.Models.Models
                 new ObjectParameter("usrID", typeof(int));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Counter>("usp_GetCountersForUser", usrIDParameter);
+=======
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Counter>("usp_GetCountersForUser", usrIDParameter);
+>>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
 =======
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Counter>("usp_GetCountersForUser", usrIDParameter);
 >>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
