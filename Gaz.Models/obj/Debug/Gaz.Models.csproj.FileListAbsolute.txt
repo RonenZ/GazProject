@@ -8,3 +8,6 @@ e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\bin\De
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.pdb
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.dll
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.pdb
