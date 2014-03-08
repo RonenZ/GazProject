@@ -176,3 +176,4 @@ E:\Work\Triotech\GazProject\GazProjec\bin\zh-Hans\System.Spatial.resources.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\zh-Hant\System.Spatial.resources.dll
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.dll
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.pdb
+E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.csprojResolveAssemblyReference.cache
