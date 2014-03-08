@@ -5,13 +5,36 @@
 }
 
     <div id="main_banner">
-
-
-
+        <ul class="bjqs">
+            <li><img src="~/Content/Images/1.jpg" /></li>
+			<li><img src="~/Content/Images/2.jpg" /></li>
+			<li><img src="~/Content/Images/3.jpg" /></li>
+        </ul>
     </div>
 
     <div>
         
-        @Html.Kendo().Grid(Model).Name("userGrid").Sortable().Groupable(o => o.Enabled(true))
+       
 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+      jQuery(document).ready(function($) {
+          $('#main_banner').bjqs({
+              height      : 300,
+              width       : 800,
+              responsive  : true
+          });
+
+      });
+</script>
