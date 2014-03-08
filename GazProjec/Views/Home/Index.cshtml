@@ -1,36 +1,19 @@
-﻿@model IEnumerable<Gaz.Models.Models.User>
+﻿@using Kendo.Mvc.UI;
+
+@model IEnumerable<Gaz.Models.Models.User>
 
 @{
-    ViewBag.Title = "Hamutzim Home Page";
+    ViewBag.Title = "הגזיה לישראל";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                hello world
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
-}
-<h3>Users:</h3>
-<ol class="round">
-    @foreach (var user in Model)
-    {
-        <li>
-            <div>ID: @user.ID</div>
-            <div>FirstName: @user.FirstName</div>
-            <div>Lastname: @user.LastName</div>
-            <div>Phone: @user.PhoneNumber</div>
-            <div>Username: @user.Username</div>
-        </li>
-    }
-</ol>
+
+    <div id="main_banner">
+
+
+
+    </div>
+
+    <div>
+        
+        @Html.Kendo().Grid(Model).Name("userGrid").Sortable().Groupable(o => o.Enabled(true))
+
+    </div>
