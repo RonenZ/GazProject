@@ -15,5 +15,6 @@ E:\Work\Triotech\GazProject\Gaz.Models\bin\Debug\EntityFramework.dll
 E:\Work\Triotech\GazProject\Gaz.Models\bin\Debug\EntityFramework.SqlServer.dll
 E:\Work\Triotech\GazProject\Gaz.Models\bin\Debug\EntityFramework.xml
 E:\Work\Triotech\GazProject\Gaz.Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.dll
 E:\Work\Triotech\GazProject\Gaz.Models\obj\Debug\Gaz.Models.pdb

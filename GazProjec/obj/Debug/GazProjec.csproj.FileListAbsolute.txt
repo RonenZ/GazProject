@@ -87,6 +87,7 @@ e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\bin\zh-
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\bin\zh-Hant\System.Spatial.resources.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\obj\Debug\GazProjec.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\obj\Debug\GazProjec.pdb
+E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\GazProjec\bin\GazProjec.dll.config
 E:\Work\Triotech\GazProject\GazProjec\bin\GazProjec.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\GazProjec.pdb
@@ -98,10 +99,12 @@ E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OAuth.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OpenId.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.dll
+E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.SqlServer.dll
+E:\Work\Triotech\GazProject\GazProjec\bin\Gaz.DAL.dll
+E:\Work\Triotech\GazProject\GazProjec\bin\Gaz.Models.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.Infrastructure.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.WebPages.OAuth.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Helpers.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Mvc.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Optimization.dll
@@ -112,8 +115,11 @@ E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.WebPages.Razor.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\WebGrease.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\WebMatrix.Data.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\WebMatrix.WebData.dll
+E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.dll
+E:\Work\Triotech\GazProject\GazProjec\bin\Gaz.DAL.pdb
+E:\Work\Triotech\GazProject\GazProjec\bin\Gaz.Models.pdb
 E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.xml
+E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.SqlServer.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Helpers.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Mvc.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Razor.xml
@@ -129,6 +135,6 @@ E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OAuth.Consumer.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OAuth.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OpenId.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.xml
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.dll
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.pdb
-E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.csprojResolveAssemblyReference.cache
