@@ -22,3 +22,15 @@ E:\Work\Triotech\GazProject\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.dll
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.pdb
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.dll.config
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.dll
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.pdb
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\EntityFramework.dll
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.Models.dll
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.Models.pdb
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\EntityFramework.xml
+D:\GitHub\GazProject\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.csprojResolveAssemblyReference.cache
+D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.dll
+D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.pdb
