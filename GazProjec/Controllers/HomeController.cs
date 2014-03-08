@@ -1,6 +1,4 @@
-﻿using Gaz.DAL;
-using Gaz.DAL.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,10 +10,6 @@ namespace GazProjec.Controllers
     {
         public ActionResult Index()
         {
-            GazDBContext db = new GazDBContext();
-            var repo = new UserRepository(db);
-            var users = repo.GetAll();
-
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             return View();
