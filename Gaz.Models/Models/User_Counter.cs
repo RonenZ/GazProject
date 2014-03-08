@@ -5,6 +5,7 @@ namespace Gaz.Models.Models
 {
     public partial class User_Counter
     {
+        public int ID { get; set; }
         public int CounterID { get; set; }
         public int UserID { get; set; }
         public System.DateTime CreateTime { get; set; }

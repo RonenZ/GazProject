@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GazCountersDbContext.cs" />
+    <Compile Include="GazSimpleUsersDbContext.cs" />
     <Compile Include="GazUsersDbContext.cs" />
     <Compile Include="GazBillingDbContext.cs" />
     <Compile Include="GazDBContext.cs" />

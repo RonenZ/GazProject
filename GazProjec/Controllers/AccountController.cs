@@ -10,6 +10,8 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using GazProjec.Filters;
 using GazProjec.Models;
+using Gaz.DAL;
+using Gaz.DAL.Repositories;
 
 namespace GazProjec.Controllers
 {

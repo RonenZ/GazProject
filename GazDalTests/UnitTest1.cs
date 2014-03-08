@@ -16,7 +16,7 @@ namespace GazDalTests
         {
             GazDBContext dbContext = new GazDBContext();
             var userRepository = new UserRepository(dbContext);
-            var user = userRepository.GetByID(1);
+            var user = userRepository.GetUserDetails(1);
 
 
             Assert.AreEqual("moshemoshe", user.Username);

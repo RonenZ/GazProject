@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -40,32 +41,29 @@ namespace Gaz.DAL.Repositories
 
         #region Stored Procedures
 
-        protected virtual ObjectResult<UserBill> usp_GetBillForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetBillForCounter(Nullable<int> counterID)
         {
-            var counterIDParameter = counterID.HasValue ?
-                new ObjectParameter("counterID", counterID) :
-                new ObjectParameter("counterID", typeof(int));
+            var counterIDP = new SqlParameter("@counterID", counterID);
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UserBill>("usp_GetBillForCounter", counterIDParameter);
+            return DbContext.Database
+                            .SqlQuery<UserBill>("usp_GetBillForCounter @counterID", counterIDP);
         }
 
 
-        protected virtual ObjectResult<UserBill> usp_GetLastBillForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetLastBillForCounter(Nullable<int> counterID)
         {
-            var counterIDParameter = counterID.HasValue ?
-                new ObjectParameter("counterID", counterID) :
-                new ObjectParameter("counterID", typeof(int));
+            var counterIDP = new SqlParameter("@counterID", counterID);
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UserBill>("usp_GetLastBillForCounter", counterIDParameter);
+            return DbContext.Database
+                            .SqlQuery<UserBill>("usp_GetLastBillForCounter @counterID", counterIDP);
         }
 
-        protected virtual ObjectResult<UserBill> usp_GetOpenBillsForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetOpenBillsForCounter(Nullable<int> counterID)
         {
-            var counterIDParameter = counterID.HasValue ?
-                new ObjectParameter("counterID", counterID) :
-                new ObjectParameter("counterID", typeof(int));
+            var counterIDP = new SqlParameter("@counterID", counterID);
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UserBill>("usp_GetOpenBillsForCounter", counterIDParameter);
+            return DbContext.Database
+                            .SqlQuery<UserBill>("usp_GetOpenBillsForCounter @counterID", counterIDP);
         }
 
         #endregion

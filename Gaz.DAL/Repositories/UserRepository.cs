@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace Gaz.DAL.Repositories
         /// </summary>
         public User GetUserDetails(int userID)
         {
-            return this.usp_GetUserDetails(userID).SingleOrDefault();
+            return this.usp_GetUserDetails(userID);
         }
 
         /// <summary>
@@ -27,32 +28,29 @@ namespace Gaz.DAL.Repositories
         /// </summary>
         public User LoginUser(string userName, string passWord)
         {
-            return this.usp_LoginUser(userName, passWord).SingleOrDefault();
+            return this.usp_LoginUser(userName, passWord);
         }
 
 
         #region Stored Procedures
 
-        protected virtual ObjectResult<User> usp_GetUserDetails(Nullable<int> userID)
+        protected virtual User usp_GetUserDetails(Nullable<int> userID)
         {
-            var userIDParameter = userID.HasValue ?
-                new ObjectParameter("userID", userID) :
-                new ObjectParameter("userID", typeof(int));
+            var userIDP = new SqlParameter("@userID", userID);
 
-            return ((IObjectContextAdapter)DbContext).ObjectContext.ExecuteFunction<User>("usp_GetUserDetails", userIDParameter);
+            return DbContext.Database
+                            .SqlQuery<User>("usp_GetUserDetails @userID", userIDP)
+                            .SingleOrDefault();
         }
 
-        protected virtual ObjectResult<User> usp_LoginUser(string userName, string passWord)
+        protected virtual User usp_LoginUser(string userName, string passWord)
         {
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
+            var userNameP = new SqlParameter("@userName", userName);
+            var passWordP = new SqlParameter("@passWord", passWord);
 
-            var passWordParameter = passWord != null ?
-                new ObjectParameter("passWord", passWord) :
-                new ObjectParameter("passWord", typeof(string));
-
-            return ((IObjectContextAdapter)DbContext).ObjectContext.ExecuteFunction<User>("usp_LoginUser", userNameParameter, passWordParameter);
+            return DbContext.Database
+                            .SqlQuery<User>("usp_LoginUser @userName, @passWord", userNameP, passWordP)
+                            .SingleOrDefault();
         }
 
         #endregion

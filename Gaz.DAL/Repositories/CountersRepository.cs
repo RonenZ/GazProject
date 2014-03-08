@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -32,31 +33,23 @@ namespace Gaz.DAL.Repositories
 
         #region Stored Procedures
 
-        protected virtual ObjectResult<Counter> usp_GetCountersForUser(Nullable<int> usrID)
+        protected virtual IEnumerable<Counter> usp_GetCountersForUser(Nullable<int> usrID)
         {
-            var usrIDParameter = usrID.HasValue ?
-                new ObjectParameter("usrID", usrID) :
-                new ObjectParameter("usrID", typeof(int));
+            var usrIDP = new SqlParameter("@usrID", usrID);
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Counter>("usp_GetCountersForUser", usrIDParameter);
+            return DbContext.Database
+                            .SqlQuery<Counter>("usp_GetCountersForUser @usrID", usrIDP);
         }
 
 
-        public virtual ObjectResult<CounterRead> usp_GetCounterReadPerPeriod(Nullable<int> counterID, Nullable<System.DateTime> startTime, Nullable<System.DateTime> endTime)
+        public virtual IEnumerable<CounterRead> usp_GetCounterReadPerPeriod(Nullable<int> counterID, Nullable<System.DateTime> startTime, Nullable<System.DateTime> endTime)
         {
-            var counterIDParameter = counterID.HasValue ?
-                new ObjectParameter("CounterID", counterID) :
-                new ObjectParameter("CounterID", typeof(int));
+            var counterIDP = new SqlParameter("@CounterID", counterID);
+            var startTimeP = new SqlParameter("@StartTime", startTime);
+            var endTimeP = new SqlParameter("@EndTime", endTime);
 
-            var startTimeParameter = startTime.HasValue ?
-                new ObjectParameter("StartTime", startTime) :
-                new ObjectParameter("StartTime", typeof(System.DateTime));
-
-            var endTimeParameter = endTime.HasValue ?
-                new ObjectParameter("EndTime", endTime) :
-                new ObjectParameter("EndTime", typeof(System.DateTime));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CounterRead>("usp_GetCounterReadPerPeriod", counterIDParameter, startTimeParameter, endTimeParameter);
+            return DbContext.Database
+                            .SqlQuery<CounterRead>("usp_GetCounterReadPerPeriod @CounterID, @StartTime, @EndTime", counterIDP, startTime, endTime);
         }
 
         #endregion
