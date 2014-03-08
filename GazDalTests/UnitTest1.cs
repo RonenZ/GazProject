@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Gaz.Models.Models.Mapping;
-using Gaz.Models.Models;
 using Gaz.DAL.Repositories;
+using Gaz.DAL;
+using System.Data;
+using System.Data.Entity;
 
 
 namespace GazDalTests
@@ -13,7 +14,7 @@ namespace GazDalTests
         [TestMethod]
         public void GetCounterForUserID()
         {
-            var dbContext = new GazDBContext();
+            GazDBContext dbContext = new GazDBContext();
             var userRepository = new UserRepository(dbContext);
             var user = userRepository.GetByID(1);
 

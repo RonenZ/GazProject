@@ -12,5 +12,17 @@ D:\GitHub\GazProject\GazDalTests\bin\Debug\EntityFramework.SqlServer.xml
 D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.csprojResolveAssemblyReference.cache
 D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.dll
 D:\GitHub\GazProject\GazDalTests\obj\Debug\GazDalTests.pdb
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\GazDalTests.dll.config
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\GazDalTests.dll
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\GazDalTests.pdb
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\EntityFramework.dll
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\EntityFramework.SqlServer.dll
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\Gaz.DAL.dll
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\Gaz.Models.dll
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\Gaz.DAL.pdb
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\Gaz.Models.pdb
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\EntityFramework.xml
+E:\Work\Triotech\GazProject\GazDalTests\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\Triotech\GazProject\GazDalTests\obj\Debug\GazDalTests.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\GazDalTests\obj\Debug\GazDalTests.dll
+E:\Work\Triotech\GazProject\GazDalTests\obj\Debug\GazDalTests.pdb

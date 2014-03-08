@@ -49,7 +49,6 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Counter.cs" />
     <Compile Include="Models\CounterRead.cs" />
-    <Compile Include="Models\GazDBContext.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\Mapping\AddressMap.cs" />
     <Compile Include="Models\Mapping\CounterMap.cs" />
