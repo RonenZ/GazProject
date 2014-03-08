@@ -11,7 +11,6 @@ e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\bin\Debug
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\obj\Debug\Gaz.DAL.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\Gaz.DAL\obj\Debug\Gaz.DAL.pdb
 <<<<<<< HEAD
-<<<<<<< HEAD
 D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.dll.config
 D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.dll
 D:\GitHub\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.pdb
@@ -24,7 +23,6 @@ D:\GitHub\GazProject\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.xml
 D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.csprojResolveAssemblyReference.cache
 D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.dll
 D:\GitHub\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.pdb
-=======
 =======
 >>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
 E:\Work\Triotech\GazProject\Gaz.DAL\bin\Debug\Gaz.DAL.dll.config
@@ -39,7 +37,3 @@ E:\Work\Triotech\GazProject\Gaz.DAL\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.dll
 E:\Work\Triotech\GazProject\Gaz.DAL\obj\Debug\Gaz.DAL.pdb
-<<<<<<< HEAD
->>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
-=======
->>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5

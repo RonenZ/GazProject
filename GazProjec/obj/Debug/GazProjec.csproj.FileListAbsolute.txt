@@ -88,7 +88,6 @@ e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\bin\zh-
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\obj\Debug\GazProjec.dll
 e:\Users\ronen\Documents\Visual Studio 2013\Projects\GazProjec\GazProjec\obj\Debug\GazProjec.pdb
 <<<<<<< HEAD
-<<<<<<< HEAD
 D:\GitHub\GazProject\GazProjec\bin\GazProjec.dll
 D:\GitHub\GazProject\GazProjec\bin\GazProjec.pdb
 D:\GitHub\GazProject\GazProjec\bin\Antlr3.Runtime.dll
@@ -178,7 +177,6 @@ D:\GitHub\GazProject\GazProjec\bin\zh-Hant\System.Spatial.resources.dll
 D:\GitHub\GazProject\GazProjec\obj\Debug\GazProjec.csprojResolveAssemblyReference.cache
 D:\GitHub\GazProject\GazProjec\obj\Debug\GazProjec.dll
 D:\GitHub\GazProject\GazProjec\obj\Debug\GazProjec.pdb
-=======
 =======
 >>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
 E:\Work\Triotech\GazProject\GazProjec\bin\GazProjec.dll.config
@@ -271,7 +269,3 @@ E:\Work\Triotech\GazProject\GazProjec\bin\zh-Hant\System.Spatial.resources.dll
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.dll
 E:\Work\Triotech\GazProject\GazProjec\obj\Debug\GazProjec.pdb
-<<<<<<< HEAD
->>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
-=======
->>>>>>> 0d1a9687616ece7b3645f93532e89ecd143dc8a5
