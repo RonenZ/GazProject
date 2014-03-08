@@ -101,13 +101,8 @@ E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.Infrastructure.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\Microsoft.Web.WebPages.OAuth.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\Newtonsoft.Json.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.Formatting.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.WebRequest.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Helpers.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Http.dll
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Http.WebHost.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Mvc.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Optimization.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Razor.dll
@@ -118,13 +113,8 @@ E:\Work\Triotech\GazProject\GazProjec\bin\WebGrease.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\WebMatrix.Data.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\WebMatrix.WebData.dll
 E:\Work\Triotech\GazProject\GazProjec\bin\EntityFramework.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\Newtonsoft.Json.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.Formatting.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Net.Http.WebRequest.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Helpers.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Http.xml
-E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Http.WebHost.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Mvc.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.Razor.xml
 E:\Work\Triotech\GazProject\GazProjec\bin\System.Web.WebPages.xml

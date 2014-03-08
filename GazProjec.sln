@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazProjec", "GazProjec\GazProjec.csproj", "{6DA27B99-F6AB-4CE2-8114-DCD07F3B00C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gaz.Models", "Gaz.Models\Gaz.Models.csproj", "{9B44428A-CC36-4D1E-804E-D866E8C1BEC1}"
