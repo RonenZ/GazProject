@@ -1,7 +1,7 @@
-﻿@using Gaz.Models.Models
+﻿@using GazProjec.Areas.Admin.Models
 @using Kendo.Mvc.UI
 
-@model  List<User>
+@model  List<UserModel>
 
 @{
     ViewBag.Title = "משתמשים";
@@ -14,7 +14,35 @@
 
 
     <div style="padding-top:5%;">
-    @Html.Kendo().Grid(Model).Name("UsersGrid")
+        @(Html.Kendo().Grid(Model).Name("UsersGrid")
+                .Columns(c =>
+                     {
+                         c.Bound(p => p.ID);
+                         c.Bound(p => p.FirstName);
+                         c.Bound(p => p.LastName);
+                         c.Bound(p => p.Email);
+                         c.Bound(p => p.Username);
+                         c.Bound(p => p.Password);
+                         c.Bound(p => p.PhoneNumber);
+                         c.Command(p => 
+                            { 
+                                p.Edit();
+                                p.Destroy();
+                            }).Title("עדכון");
+                     })
+                  .DataSource(o => o.Ajax()
+                          .Model(p => 
+                          { 
+                              p.Id(i => i.ID);
+                              p.Field(i => i.ID).Editable(false);
+                          })
+                  .Read("UsersRead", "AdminUsers", new { Area = "Admin" })
+                  .Update("UsersUpdate", "AdminUsers", new { Area = "Admin" })
+                  .Destroy("RemoveUser", "AdminUsers", new { Area = "Admin" }))
+                  .Editable(editable => editable.Mode(GridEditMode.InLine))
+                  .Sortable()
+                 )
+
     </div>
 
 
