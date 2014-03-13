@@ -6,17 +6,12 @@ using System.Web.Mvc;
 
 namespace GazProjec.Areas.Admin.Controllers
 {
-    public class BillsController : Controller
+    public class AdminCounterController : Controller
     {
         //
-        // GET: /Admin/Bills/
+        // GET: /Admin/AdminCounter/
 
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Details()
         {
             return View();
         }
