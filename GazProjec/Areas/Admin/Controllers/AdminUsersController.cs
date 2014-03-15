@@ -74,19 +74,6 @@ namespace GazProjec.Areas.Admin.Controllers
             {
                 using (var db = new GazDBContext())
                 {
-                    //var entity = new User
-                    //{
-                    //    ID = user.ID,
-                    //    FirstName = user.FirstName,
-                    //    LastName = user.LastName,
-                    //    PhoneNumber = user.PhoneNumber,
-                    //    Email = user.Email,
-                    //    Password = user.Password,
-                    //    RoleID = user.RoleID,
-                    //    Username = user.Username
-                    //};
-
-                    //db.Users.Attach(entity);
 
                     var entity = db.Users.Single(o => o.ID == user.ID);
 

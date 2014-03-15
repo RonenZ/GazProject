@@ -162,6 +162,8 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminNotificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminUsersController.cs" />
+    <Compile Include="Areas\Admin\Models\AddressModel.cs" />
+    <Compile Include="Areas\Admin\Models\CounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
     <Compile Include="Areas\Customers\Controllers\BillsController.cs" />
     <Compile Include="Areas\Customers\CustomersAreaRegistration.cs" />

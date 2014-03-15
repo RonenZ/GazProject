@@ -1,5 +1,80 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@using Kendo.Mvc.UI
+@model List<GazProjec.Areas.Admin.Models.CounterModel>
+
+@{
+    ViewBag.Title = "מונים";
 }
 
-<h2>Index</h2>
+<h1 style="direction: rtl; padding-right: 70px;">מונים</h1>
+
+<input id="lol" type="button" value="click" />
+
+
+<div id="contentHolder">
+
+    <div id="mainTable">
+        @(Html.Kendo().Grid(Model).Name("counterTable")
+              .Columns(c =>
+              {
+                  c.Bound(o => o.CounterID).Title("מספר מונה");
+                  c.Bound(o => o.AddressID).Title("מספר כתובת");
+                  c.Bound(o => o.AddressData.CityName).Title("עיר");
+                  c.Bound(o => o.AddressData.StreetName).Title("רחוב");
+                  c.Bound(o => o.AddressData.HouseNumber).Title("מספר בית");
+                  c.Bound(o => o.AddressData.ApartmentNumber).Title("מספר דירה");
+                  c.Bound(o => o.AddressData.Latitude).Title("קו רוחב");
+                  c.Bound(o => o.AddressData.Longitude).Title("קו אורך");
+                  c.Command(o => o.Custom("צפה").Click("moveMap")).Title("פעולות");
+              }).HtmlAttributes(new { style = "float:right;overflow: hidden;width:45%;" })
+              .DataSource(ds => ds.Ajax().Read("CounterRead", "AdminCounter", new { Area = "Admin" })))
+    </div>
+    <div style="border-left: solid #9f5a89; border-left-width: 1px; border-left: solid rgba(159, 90, 137, 0.38); float: right; height: 1000px; padding-right: 100px">
+    </div>
+    <div id="map-canvas" style="width: 45%; height: 500px; float: left;"></div>
+
+</div>
+  
+<script type="text/javascript">
+    var map;
+    var markerArray = [];
+    var size = 0;
+
+    $(document).ready(function() {
+        initialize();
+    });
+
+    function initialize() {
+        var mapOptions = { 
+            center: new google.maps.LatLng(32.0165284, 34.745762),
+            zoom: 16
+        };
+
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+    }
+
+    function moveMap(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var location = new google.maps.LatLng(dataItem.AddressData.Longitude, dataItem.AddressData.Latitude);
+        map.panTo(location);
+
+        if (size > 0) {
+            for (var i = 0; i < size; i++) {
+                markerArray[i].setMap(null);
+            }
+
+            size = 0;
+        }
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: dataItem.CounterID.toString()
+        });
+        
+        markerArray[size] = marker;
+        size++;
+    }
+
+</script>
