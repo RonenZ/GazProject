@@ -13,36 +13,77 @@
 <h2 style="direction:rtl;">משתמשים</h2>
 
 
-    <div style="padding-top:5%;">
-        @(Html.Kendo().Grid(Model).Name("UsersGrid")
-                .Columns(c =>
-                     {
-                         c.Bound(p => p.ID);
-                         c.Bound(p => p.FirstName);
-                         c.Bound(p => p.LastName);
-                         c.Bound(p => p.Email);
-                         c.Bound(p => p.Username);
-                         c.Bound(p => p.Password);
-                         c.Bound(p => p.PhoneNumber);
-                         c.Command(p => 
-                            { 
-                                p.Edit();
-                                p.Destroy();
-                            }).Title("עדכון");
-                     })
-                  .DataSource(o => o.Ajax()
-                          .Model(p => 
-                          { 
-                              p.Id(i => i.ID);
-                              p.Field(i => i.ID).Editable(false);
-                          })
-                  .Read("UsersRead", "AdminUsers", new { Area = "Admin" })
-                  .Update("UsersUpdate", "AdminUsers", new { Area = "Admin" })
-                  .Destroy("RemoveUser", "AdminUsers", new { Area = "Admin" }))
-                  .Editable(editable => editable.Mode(GridEditMode.InLine))
-                  .Sortable()
-                 )
+<div style="padding-top:2%; width: 60%; float:right; margin-right: 20%;">
+    @(Html.Kendo().Grid(Model).Name("UsersGrid")
+          .Columns(c =>
+          {
+              c.Bound(p => p.ID).Title("מספר לקוח");
+              c.Bound(p => p.FirstName).Title("שם פרטי");
+              c.Bound(p => p.LastName).Title("שם משפחה");
+              c.Bound(p => p.Email).Title("דואל");
+              c.Bound(p => p.Username).Title("שם משתמש");
+              c.Bound(p => p.Password).Title("סיסמה");
+              c.Bound(p => p.PhoneNumber).Title("טלפון");
+              c.Command(p => 
+              { 
+                  p.Edit().Text("עדכון");
+                  p.Destroy().Text("מחיקה");
+                  p.Custom("מונים").Click("getCounters");
+              }).Title("פעולות");
+          })
+          .DataSource(o => o.Ajax()
+              .Model(p => 
+              { 
+                  p.Id(i => i.ID);
+                  p.Field(i => i.ID).Editable(false);
+              })
+              .Read("UsersRead", "AdminUsers", new { Area = "Admin" })
+              .Update("UsersUpdate", "AdminUsers", new { Area = "Admin" })
+              .Destroy("RemoveUser", "AdminUsers", new { Area = "Admin" }))
+          .Editable(editable => editable.Mode(GridEditMode.InLine))
+          .Sortable()
+          .Scrollable()
+          .Resizable(o => o.Columns(true))
+          .HtmlAttributes(new { style = "height:500px;"})
+          )
 
-    </div>
+</div>
+
+
+        @(Html.Kendo().Window()
+        .Name("counterWindow")
+        .Title("מונים")
+        .Height(400)
+        .Width(750)
+        .Modal(true)
+        .Draggable()
+        .Resizable()
+        .Visible(false)
+        )
+
+
+
+<script type="text/javascript">
+
+
+    function getCounters(e) {
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+        $.ajax({
+            url: '@Url.Action("GetCountersForUser")',
+            data: { userID: dataItem.ID },
+            success: function (e) {
+                $('#counterWindow').html(e.toString());
+                $('#counterWindow').kendoWindow("open").center();
+            }
+
+        });
+
+
+    }
+
+
+</script>
 
 

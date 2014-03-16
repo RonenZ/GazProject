@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -83,6 +83,13 @@ namespace GazProjec.Areas.Admin.Controllers
             }
 
             return Json(new[] { user }.ToDataSourceResult(request, ModelState));
+        }
+
+        public ActionResult GetCountersForUser(int userID)
+        {
+            var model = new UserCounterModel(userID);
+
+            return PartialView("~/Areas/Admin/Views/AdminCounter/_UserCounter.cshtml", model);
         }
 
     }

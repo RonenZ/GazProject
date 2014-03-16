@@ -13,6 +13,12 @@ namespace GazProjec.Areas.Admin.Models
         public float Latitude { get; set; }
         public float Longitude { get; set; }
 
+
+        public AddressModel()
+        {
+        }
+
+
         public AddressModel(int addressID)
         {
             using (var db = new GazDBContext())

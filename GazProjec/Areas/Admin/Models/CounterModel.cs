@@ -9,6 +9,8 @@ namespace GazProjec.Areas.Admin.Models
         public int AddressID { get; set; }
         public AddressModel AddressData { get; set; }
 
+        public CounterModel() { }
+
         public CounterModel(int counterID)
         {
             using (var db = new GazDBContext())

@@ -7,9 +7,6 @@
 
 <h1 style="direction: rtl; padding-right: 70px;">מונים</h1>
 
-<input id="lol" type="button" value="click" />
-
-
 <div id="contentHolder">
 
     <div id="mainTable">
@@ -24,13 +21,29 @@
                   c.Bound(o => o.AddressData.ApartmentNumber).Title("מספר דירה");
                   c.Bound(o => o.AddressData.Latitude).Title("קו רוחב");
                   c.Bound(o => o.AddressData.Longitude).Title("קו אורך");
-                  c.Command(o => o.Custom("צפה").Click("moveMap")).Title("פעולות");
-              }).HtmlAttributes(new { style = "float:right;overflow: hidden;width:45%;" })
-              .DataSource(ds => ds.Ajax().Read("CounterRead", "AdminCounter", new { Area = "Admin" })))
+                  c.Command(o =>
+                  {
+                      o.Custom("צפה").Click("moveMap");
+                      o.Edit();
+
+                  }).Title("פעולות");
+              })
+              .HtmlAttributes(new { style = "float:right;overflow: hidden;width:45%; height:500px; padding-right: 35px" })
+              .DataSource(ds => ds.Ajax()
+                  .Model(m =>
+                  {
+                      m.Id(o => o.CounterID);
+                      m.Field(o => o.CounterID).Editable(false);
+                      m.Field(o => o.AddressID).Editable(false);
+                  })
+                  .Read("CounterRead", "AdminCounter", new { Area = "Admin" })
+                  .Update("UsersUpdate", "AdminCounter", new { Area = "Admin" }))
+              .Scrollable()
+              .Sortable())
     </div>
-    <div style="border-left: solid #9f5a89; border-left-width: 1px; border-left: solid rgba(159, 90, 137, 0.38); float: right; height: 1000px; padding-right: 100px">
+    <div style="border-left: solid #9f5a89; border-left-width: 1px; border-left: solid rgba(159, 90, 137, 0.38); float: right; height: 500px; margin-left: 30px; padding-right: 30px">
     </div>
-    <div id="map-canvas" style="width: 45%; height: 500px; float: left;"></div>
+    <div id="map-canvas" style="width: 45%; height: 500px; float: right;"></div>
 
 </div>
   
