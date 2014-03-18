@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Gaz.Models.Models
 {
     public partial class UserNotification : IBaseModel
