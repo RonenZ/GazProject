@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Gaz.DAL;
+using Gaz.Models.Models;
 
 namespace GazProjec.Areas.Admin.Models
 {
@@ -19,20 +20,15 @@ namespace GazProjec.Areas.Admin.Models
         }
 
 
-        public AddressModel(int addressID)
+        public AddressModel(Address address)
         {
-            using (var db = new GazDBContext())
-            {
-                var result = db.Addresses.Single(o => o.ID == addressID);
-
-                AddressID = result.ID;
-                CityName = result.CityName;
-                StreetName = result.StreetName;
-                HouseNumber = result.HouseNumber;
-                ApartmentNumber = result.ApartmentNumber;
-                Latitude = result.latitude;
-                Longitude = result.longitude;
-            }
+            AddressID = address.ID;
+            CityName = address.CityName;
+            StreetName = address.StreetName;
+            HouseNumber = address.HouseNumber;
+            ApartmentNumber = address.ApartmentNumber;
+            Latitude = address.latitude;
+            Longitude = address.longitude;
         }
 
     }

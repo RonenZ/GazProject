@@ -34,7 +34,7 @@ namespace Gaz.DAL
             modelBuilder.Configurations.Add(new AddressMap());
             modelBuilder.Configurations.Add(new CounterReadMap());
             modelBuilder.Configurations.Add(new CounterMap());
-            modelBuilder.Configurations.Add(new User_Counter_ReferenceMap());
+            //modelBuilder.Configurations.Add(new User_Counter_ReferenceMap());
             modelBuilder.Configurations.Add(new UserBillMap());
             modelBuilder.Configurations.Add(new UserComplaintMap());
             modelBuilder.Configurations.Add(new UserNotificationMap());

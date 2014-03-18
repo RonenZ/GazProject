@@ -5,6 +5,5 @@ D:\GitHub\GazProject\GazProjecTests\obj\Debug\GazProjecTests.dll
 D:\GitHub\GazProject\GazProjecTests\obj\Debug\GazProjecTests.pdb
 E:\Work\Triotech\GazProject\GazProjecTests\bin\Debug\GazProjecTests.dll
 E:\Work\Triotech\GazProject\GazProjecTests\bin\Debug\GazProjecTests.pdb
-E:\Work\Triotech\GazProject\GazProjecTests\obj\Debug\GazProjecTests.csprojResolveAssemblyReference.cache
 E:\Work\Triotech\GazProject\GazProjecTests\obj\Debug\GazProjecTests.dll
 E:\Work\Triotech\GazProject\GazProjecTests\obj\Debug\GazProjecTests.pdb

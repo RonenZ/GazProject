@@ -24,12 +24,12 @@ namespace Gaz.Models.Models.Mapping
             this.Property(t => t.CreateTime).HasColumnName("CreateTime");
 
             // Relationships
-            this.HasRequired(t => t.Counter)
-                .WithMany(t => t.User_Counter_Reference)
-                .HasForeignKey(d => d.CounterID);
-            this.HasRequired(t => t.User)
-                .WithMany(t => t.User_Counter_Reference)
-                .HasForeignKey(d => d.UserID);
+            //this.HasRequired(t => t.Counter)
+            //    .WithMany(t => t.User_Counter_Reference)
+            //    .HasForeignKey(d => d.CounterID);
+            //this.HasRequired(t => t.User)
+            //    .WithMany(t => t.User_Counter_Reference)
+            //    .HasForeignKey(d => d.UserID);
 
         }
     }

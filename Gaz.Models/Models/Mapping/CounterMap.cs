@@ -20,7 +20,6 @@ namespace Gaz.Models.Models.Mapping
             this.HasRequired(t => t.Address)
                 .WithMany(t => t.Counters)
                 .HasForeignKey(d => d.AddressID);
-
         }
     }
 }

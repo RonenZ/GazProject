@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Gaz.DAL;
+using Gaz.Models.Models;
 
 namespace GazProjec.Areas.Admin.Models
 {
@@ -11,16 +12,11 @@ namespace GazProjec.Areas.Admin.Models
 
         public CounterModel() { }
 
-        public CounterModel(int counterID)
+        public CounterModel(Counter counter)
         {
-            using (var db = new GazDBContext())
-            {
-                var result = db.Counters.Single(o => o.ID == counterID);
-
-                CounterID = result.ID;
-                AddressID = result.AddressID;
-                AddressData = new AddressModel(AddressID);
-            }
+            CounterID = counter.ID;
+            AddressID = counter.AddressID;
+            AddressData = new AddressModel(counter.Address);
         }
     }
 }

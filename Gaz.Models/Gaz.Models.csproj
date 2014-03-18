@@ -58,7 +58,6 @@
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\UserNotificationMap.cs" />
     <Compile Include="Models\Mapping\UserRoleMap.cs" />
-    <Compile Include="Models\Mapping\User_Counter_ReferenceMap.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserBill.cs" />
     <Compile Include="Models\UserComplaint.cs" />

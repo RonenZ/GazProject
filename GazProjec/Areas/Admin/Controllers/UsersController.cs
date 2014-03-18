@@ -89,7 +89,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             var model = new UserCounterModel(userID);
 
-            return PartialView("~/Areas/Admin/Views/AdminCounter/_UserCounter.cshtml", model);
+            return PartialView("~/Areas/Admin/Views/Counter/_UserCounter.cshtml", model);
         }
 
     }

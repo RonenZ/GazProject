@@ -7,7 +7,7 @@ namespace Gaz.Models.Models
     {
         public User()
         {
-            this.User_Counter_Reference = new List<User_Counter>();
+            this.User_Counters = new List<Counter>();
             this.UserComplaints = new List<UserComplaint>();
             this.UserNotifications = new List<UserNotification>();
         }
@@ -20,7 +20,7 @@ namespace Gaz.Models.Models
         public string Password { get; set; }
         public string Username { get; set; }
         public int RoleID { get; set; }
-        public virtual ICollection<User_Counter> User_Counter_Reference { get; set; }
+        public virtual ICollection<Counter> User_Counters { get; set; }
         public virtual ICollection<UserComplaint> UserComplaints { get; set; }
         public virtual ICollection<UserNotification> UserNotifications { get; set; }
         public virtual UserRole UserRole { get; set; }

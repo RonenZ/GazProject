@@ -51,6 +51,14 @@ namespace Gaz.Models.Models.Mapping
                 .WithMany(t => t.Users)
                 .HasForeignKey(d => d.RoleID);
 
+            this.HasMany(x => x.User_Counters)
+                .WithMany(x => x.Users)
+                .Map(m =>
+                   {
+                       m.MapLeftKey("UserID");
+                       m.MapRightKey("CounterID");
+                       m.ToTable("User_Counter_Reference");
+                   });
         }
     }
 }

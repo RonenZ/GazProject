@@ -20,11 +20,11 @@ namespace GazProjec.Areas.Admin.Models
 
                 Counters = new List<CounterModel>();
 
-                var references = db.Users.Single(o => o.ID == userID).User_Counter_Reference;
-                
-                foreach (var reference in references)
+                var counters = db.Users.Find(userID).User_Counters;
+
+                foreach (var count in counters)
                 {
-                    Counters.Add(new CounterModel(reference.CounterID));    
+                    Counters.Add(new CounterModel(count));    
                 }
 
             }

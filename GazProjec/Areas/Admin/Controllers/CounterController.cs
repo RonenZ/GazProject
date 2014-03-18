@@ -29,7 +29,7 @@ namespace GazProjec.Areas.Admin.Controllers
                 
                 foreach (var counter in db.Counters)
                 {
-                    model.Add(new CounterModel(counter.ID));
+                    model.Add(new CounterModel(counter));
                 }
 
                 return model;
