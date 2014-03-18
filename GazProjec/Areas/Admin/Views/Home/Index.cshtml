@@ -1,0 +1,20 @@
+﻿@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="direction:rtl;">מסך ניהול</h2>
+
+<div id="mainPanel" style="direction:rtl;padding-top:5%;padding-right:30%;">
+    <table style="font-size:30px">
+        <tr>
+            <td>@Html.ActionLink("משתמשים", "Index", "AdminUsers", new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
+            <td>@Html.ActionLink("מונים", "Index", "AdminCounter",new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
+        </tr>
+         <tr>
+            <td>@Html.ActionLink("התראות", "Index", "AdminNotifications",new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
+            <td>@Html.ActionLink("תלונות", "Index", "AdminComplaints", new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
+        </tr>
+    </table>
+</div>

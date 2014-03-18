@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace GazProjec.Controllers
 {
@@ -12,6 +13,7 @@ namespace GazProjec.Controllers
     {
         public ActionResult Index()
         {
+            var test = WebSecurity.CurrentUserName;
             var db = new GazDBContext();
             var repo = new UserRepository(db);
             var users = repo.GetAll();

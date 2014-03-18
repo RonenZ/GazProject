@@ -7,6 +7,7 @@ using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Gaz.DAL.Repositories
@@ -14,6 +15,21 @@ namespace Gaz.DAL.Repositories
     public class UserRepository : GenericRepository<User>
     {
         public UserRepository(DbContext context) : base(context) { }
+
+        /// <summary>
+        /// return user details using sp
+        /// </summary>
+        public int GetUserRoleByUsername(string username)
+        {
+            //if (include != null)
+            //{
+            //    return this.DbSet.Include(include).FirstOrDefault(f => f.Username.Equals(username));
+            //}
+            var user = this.DbSet.FirstOrDefault(f => f.Username.Equals(username));
+            if(user == null) return 0;
+
+            return user.RoleID;
+        }
 
         /// <summary>
         /// return user details using sp

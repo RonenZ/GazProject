@@ -11,34 +11,39 @@ namespace GazProjec.Models
 {
     public class ExtendedSimpleMembershipProvider : SimpleMembershipProvider
     {
+        private Gaz.Models.Models.User currUser;
         public override bool ValidateUser(string login, string password)
         {
             var dbcxt = new GazSimpleUsersDbContext();
             var urepo = new UserRepository(dbcxt);
-            var user = urepo.LoginUser(login, password);
-            if (user != null)
+            currUser = urepo.LoginUser(login, password);
+            if (currUser != null)
             {
-                //if (user.RoleID == 1)
-                //{
-                //    if (!Roles.RoleExists("EndUser"))
-                //        Roles.CreateRole("EndUser");
-
-                //    Roles.AddUsersToRole(new[] { login }, "EndUser");
-                //}
-                //else if (user.RoleID == 2)
-                //{
-                //    if (!Roles.RoleExists("Administrator"))
-                //        Roles.CreateRole("Administrator");
-
-                //    Roles.AddUsersToRole(new[] { login }, "Administrator");
-                //}
                 return true;
             }
             else
             {
                 return false;
+            } 
+
+        }
+
+        public override MembershipUser GetUser(string username, bool userIsOnline)
+        {
+            if(currUser == null){
+                var dbcxt = new GazSimpleUsersDbContext();
+                var urepo = new UserRepository(dbcxt);
+                currUser = urepo.GetAll().FirstOrDefault(u => u.Username == username);
+            
+                if(currUser != null) return null;
+
+                MembershipUser user = new MembershipUser(currUser.FirstName, currUser.FirstName, null, currUser.Email, string.Empty,
+                    string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
+
+                return user;
             }
 
+            return null;
         }
     }
 }
