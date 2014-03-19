@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Models\UserCounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
     <Compile Include="Areas\Customers\Controllers\BillsController.cs" />
+    <Compile Include="Areas\Customers\Controllers\HomeController.cs" />
     <Compile Include="Areas\Customers\CustomersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -463,6 +464,7 @@
     <Content Include="Areas\Admin\Views\Notifications\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Counter\_UserCounter.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

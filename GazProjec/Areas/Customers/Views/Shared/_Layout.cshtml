@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Gaz Management - @ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    	<!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+	@Scripts.Render("~/bundles/jquery")
+	<!--This CSS entry was added by the Telerik VS Extensions for compatibility reasons-->
+	<link href="@Url.Content("~/Content/kendo.compatibility.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2013.3.1324/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2013.3.1324/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2013.3.1324/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2013.3.1324/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIx1qbK9PmKSeZrvFl8WmtJ76OlTdWxRc&sensor=false&language=iw"></script>
+
+
+    </head>
+    <body>
+        <header class="header-bar">
+            <div class="content-wrapper">
+                <div class="float-right">
+                    <p class="site-title">@Html.ActionLink("הגזיה לישראל - האזור שלי", "Index", "Home")</p>
+                </div>
+
+            </div>
+        </header>
+        <div id="body">
+            
+            @RenderSection("featured", required: false)
+            <!-- content-wrapper -->
+            <section class="  main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+
+            </div>
+        </footer>
+
+        
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

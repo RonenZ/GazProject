@@ -37,6 +37,16 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("בית", "Index", "Home")</li>
+                            @if(User.Identity.IsAuthenticated)
+                            {
+                                if(User.IsInRole("Administrator")){
+                                    <li>@Html.ActionLink("ניהול", "Index", new { Area = "Admin" })</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("החשבון שלי", "Index", new { Area = "Customers" })</li>
+                                }
+                            }
                             <li>@Html.ActionLink("עלינו", "About", "Home")</li>
                             <li>@Html.ActionLink("צור קשר", "Contact", "Home")</li>
                         </ul>

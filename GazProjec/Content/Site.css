@@ -5,7 +5,6 @@
 }
 
 body {
-    direction: rtl;
     /*background-color: #fff;*/
     border-top: solid 10px #000;
     color: #333;
@@ -16,6 +15,7 @@ body {
 }
 
 .header-bar {
+    direction: rtl;
     background-color: #C2C2C2;
     border-bottom: 1px solid #A7A7A7;
 }
@@ -34,7 +34,7 @@ a {
     }
 
     a:hover {
-    color: rgb(84, 97, 190);
+    color: rgb(61, 146, 224);
     }
 
 header, footer, hgroup,
