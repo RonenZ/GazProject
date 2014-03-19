@@ -7,11 +7,12 @@
     ViewBag.Title = "משתמשים";
 }
 
-
-
-
 <h2 style="direction:rtl;">משתמשים</h2>
 
+
+<div>
+    <a href="~/Admin/Home">אחורה</a>
+</div>
 
 <div style="padding-top:2%; width: 60%; float:right; margin-right: 20%;">
     @(Html.Kendo().Grid(Model).Name("UsersGrid")
@@ -37,9 +38,9 @@
                   p.Id(i => i.ID);
                   p.Field(i => i.ID).Editable(false);
               })
-              .Read("UsersRead", "AdminUsers", new { Area = "Admin" })
-              .Update("UsersUpdate", "AdminUsers", new { Area = "Admin" })
-              .Destroy("RemoveUser", "AdminUsers", new { Area = "Admin" }))
+              .Read("UsersRead", "Users", new { Area = "Admin" })
+              .Update("UsersUpdate", "Users", new { Area = "Admin" })
+              .Destroy("RemoveUser", "Users", new { Area = "Admin" }))
           .Editable(editable => editable.Mode(GridEditMode.InLine))
           .Sortable()
           .Scrollable()

@@ -462,6 +462,7 @@
     <Content Include="Areas\Admin\Views\Complaints\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Notifications\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Counter\_UserCounter.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

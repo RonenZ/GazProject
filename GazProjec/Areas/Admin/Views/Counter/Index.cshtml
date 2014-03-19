@@ -7,6 +7,10 @@
 
 <h1 style="direction: rtl; padding-right: 70px;">מונים</h1>
 
+<div>
+    <a href="~/Admin/Home">אחורה</a>
+</div>
+
 <div id="contentHolder">
 
     <div id="mainTable">
@@ -46,18 +50,18 @@
     <div id="map-canvas" style="width: 45%; height: 500px; float: right;"></div>
 
 </div>
-  
+
 <script type="text/javascript">
     var map;
     var markerArray = [];
     var size = 0;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         initialize();
     });
 
     function initialize() {
-        var mapOptions = { 
+        var mapOptions = {
             center: new google.maps.LatLng(32.0165284, 34.745762),
             zoom: 16
         };
@@ -85,7 +89,7 @@
             map: map,
             title: dataItem.CounterID.toString()
         });
-        
+
         markerArray[size] = marker;
         size++;
     }
