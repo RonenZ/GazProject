@@ -4,15 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2 style="direction:rtl;">מסך ניהול</h2>
-
 <div id="mainPanel" style="direction:rtl;padding-top:5%;padding-right:30%;">
     <table style="font-size:30px">
         <tr>
             <td>@Html.ActionLink("משתמשים", "Index", "Users", new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
             <td>@Html.ActionLink("מונים", "Index", "Counter",new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
-        </tr>
-         <tr>
             <td>@Html.ActionLink("התראות", "Index", "Notifications",new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
             <td>@Html.ActionLink("תלונות", "Index", "Complaints", new { Area = "Admin" }, new { @class = "k-button k-button-icontext" })</td>
         </tr>

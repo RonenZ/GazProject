@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>Gaz Management - @ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -24,14 +24,16 @@
 
     </head>
     <body>
-        <header>
+        <header class="header-bar">
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("הגזיה לישראל", "Index", "Home")</p>
+                <div class="float-right">
+                    <p class="site-title">@Html.ActionLink("הגזיה לישראל - מסך ניהול", "Index", "Home")</p>
                 </div>
+
             </div>
         </header>
         <div id="body">
+            
             @RenderSection("featured", required: false)
             <!-- content-wrapper -->
             <section class="  main-content clear-fix">
@@ -40,9 +42,7 @@
         </div>
         <footer>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year</p>
-                </div>
+
             </div>
         </footer>
 

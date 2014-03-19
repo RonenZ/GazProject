@@ -5,13 +5,19 @@
 }
 
 body {
-    background-color: #fff;
+    direction: rtl;
+    /*background-color: #fff;*/
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
+}
+
+.header-bar {
+    background-color: #C2C2C2;
+    border-bottom: 1px solid #A7A7A7;
 }
 
 a {
@@ -28,7 +34,7 @@ a {
     }
 
     a:hover {
-        background-color: #c7d1d6;
+    color: rgb(84, 97, 190);
     }
 
 header, footer, hgroup,
@@ -99,13 +105,13 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    /* background-color: #efeeef; */
     clear: both;
     padding-bottom: 35px;
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
+        /*background: url("../Images/accent.png") no-repeat;*/
         padding-left: 10px;
         padding-top: 30px;
     }
@@ -116,6 +122,7 @@ h5, h6 {
 
 header .content-wrapper {
     padding-top: 20px; 
+    height: 70px;
 }
 
 footer {
@@ -129,15 +136,16 @@ footer {
 /* site title
 ----------------------------------------------------------*/
 .site-title {
-    color: #c8c8c8;
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    color: white;
+    font-family: arial;
     font-size: 2.3em;
     margin: 0;
 }
 
 .site-title a, .site-title a:hover, .site-title a:active {
     background: none;
-    color: #c8c8c8;
+    font-weight: bold;
+    color: #333;
     outline: none;
     text-decoration: none;
 }
@@ -153,7 +161,6 @@ footer {
 }
 
     #login a {
-        background-color: #d3dce0;
         margin-left: 10px;
         margin-right: 3px;
         padding: 2px 3px;
@@ -195,7 +202,7 @@ ul#menu {
 
         ul#menu li a {
             background: none;
-            color: #999;
+            color: #FFF;
             text-decoration: none;
         }
 
