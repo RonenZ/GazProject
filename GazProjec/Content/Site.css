@@ -1,5 +1,5 @@
 ﻿html {
-    background-color: #e2e2e2;
+    background-color: #ECECEC;
     margin: 0;
     padding: 0;
 }
@@ -12,6 +12,10 @@ body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
+}
+
+#main_banner {
+    margin: 0 auto;
 }
 
 .header-bar {
@@ -127,7 +131,6 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
     font-size: .8em;
     height: 100px;
 }
