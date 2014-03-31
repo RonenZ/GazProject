@@ -115,6 +115,8 @@ h5, h6 {
 }
 
     .main-content {
+        margin: 0 auto;
+        max-width: 70%;
         /*background: url("../Images/accent.png") no-repeat;*/
         padding-left: 10px;
         padding-top: 30px;
