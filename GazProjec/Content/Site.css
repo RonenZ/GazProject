@@ -480,6 +480,18 @@ textarea {
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
       filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
     }
+    
+    a.k-button:hover{
+    color: #ffffff;
+    background-color: #0044cc;
+    *background-color: #003bb3;
+    }
+    
+    a.k-button:active{
+    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+    }
 
     td input[type="submit"],
     td input[type="button"],
