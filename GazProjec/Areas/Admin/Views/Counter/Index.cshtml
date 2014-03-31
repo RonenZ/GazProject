@@ -23,8 +23,6 @@
                   c.Bound(o => o.AddressData.StreetName).Title("רחוב");
                   c.Bound(o => o.AddressData.HouseNumber).Title("מספר בית");
                   c.Bound(o => o.AddressData.ApartmentNumber).Title("מספר דירה");
-                  c.Bound(o => o.AddressData.Latitude).Title("קו רוחב");
-                  c.Bound(o => o.AddressData.Longitude).Title("קו אורך");
                   c.Command(o =>
                   {
                       o.Custom("צפה").Click("moveMap");
