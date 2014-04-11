@@ -22,7 +22,7 @@ namespace GazProjec.Areas.Admin.Controllers
             return View(GetUsers());
         }
 
-        private List<UserModel> GetUsers()
+        internal List<UserModel> GetUsers()
         {
             using (var db = new GazDBContext())
             {

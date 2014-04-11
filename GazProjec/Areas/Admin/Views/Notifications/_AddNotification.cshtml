@@ -1,0 +1,67 @@
+﻿@using Kendo.Mvc.UI
+@model List<GazProjec.Areas.Admin.Models.UserModel>
+
+
+<div>
+<textarea id="notificationMessage" name="notificationMessage"></textarea>
+</div>
+
+@Html.Kendo().Grid(Model).Name("Users").Columns(c =>
+{
+    c.Template(@<text><input type="checkbox" id="@item.ID" /></text>).ClientTemplate("<#= ID #>").Width(50);
+    c.Bound(o => o.FirstName).Title("שם פרטי").Width(150);
+    c.Bound(o => o.LastName).Title("שם משפחה").Width(150);
+    c.Bound(o => o.Email).Title("דואר אלקטרוני").Width(150);
+}).HtmlAttributes(new {id = "mainData"}).Scrollable()
+
+
+<div style="text-align: center;">
+<button id="submitButton">שלח התראה</button>
+    </div>
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    $('#submitButton').click(function () {
+        var message = $('#notificationMessage').val().trim();
+        
+        if (message == '') {
+       
+            alert("אינך יכול לשמור התראה ריקה");
+            return;
+        }
+
+        var ids = [];
+        var inputs = $('#mainData :input :checked');
+        var selected = [];
+        $('#mainData input:checked').each(function () {
+            selected.push($(this).attr('id').replace('"',''));
+        });
+
+
+        var data = {};
+        data.message = message;
+        data.userIds = JSON.stringify(selected);
+        data.json = true;
+        
+        $.ajax({
+            url: '/Admin/Notifications/SetNotificationForMultipleUsers',
+            type: 'POST',
+            data: data,
+            succes: function() {
+                alert('success');
+            },
+            error: function() {
+                alert('error');
+            }
+        });
+
+
+    })
+
+
+</script>

@@ -1,5 +1,61 @@
-﻿@{
+﻿@using System.Net.Mime
+@using Kendo.Mvc.UI
+@model List<GazProjec.Areas.Admin.Models.NotificationModel>
+@{
+    
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="direction: rtl;">התראות למשתמשים</h2>
+
+
+
+@(Html.Kendo().Grid(Model).Name("NotificationGrid")
+      .ToolBar(o => o.Template(@<text>
+                                <button id="AddNotification">הוסף התראות</button>    
+                                </text>))
+.HtmlAttributes(new { style = "text-align:right;"})
+    .Columns(c =>
+  {
+      c.Bound(o => o.NotificationID).Title("מספר התראה");
+      c.Bound(o => o.NotificationDescription).Title("הודעה");
+      c.Bound(o => o.UserID).Title("מספר משתמש");
+      c.Bound(o => o.CreateTime).Title("תאריך");
+      c.Bound(o => o.Disabled).Title("מבוטל");
+      c.Command(o => o.Edit()).Title("פעולות");
+  })  
+  .DataSource(d => d.Ajax().Read("ReadNotifications", "Notifications", new { Area = "Admin" })
+      .Update("NotificationUpdate", "Notifications", new { Area = "Admin" })
+      .Model(m =>
+  {
+      m.Id(o => o.NotificationID);
+      m.Field(o => o.NotificationID).Editable(false);
+  }))
+  .Scrollable()
+  .Sortable()
+  .Resizable(o => o.Columns(true))
+      )
+
+
+@(Html.Kendo().Window()
+      .Name("NotificationWindow")
+      .Title("הוסף התראות")
+      .Modal(true)
+      .Visible(false))
+
+<script type="text/javascript">
+    
+    $('#AddNotification').click(function () {
+        $.ajax({            
+            url: '/Admin/Notifications/GetAddNotificationView',
+            type: "POST",
+            success: function(e) {
+                $("#NotificationWindow").data("kendoWindow").content(e.toString());
+                $("#NotificationWindow").data("kendoWindow").center().open();
+            }
+        });
+    })
+
+
+</script>
+
