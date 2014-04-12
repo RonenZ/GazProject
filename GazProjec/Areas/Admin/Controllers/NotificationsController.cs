@@ -86,15 +86,12 @@ namespace GazProjec.Areas.Admin.Controllers
             }
         }
 
-        public void SetNotificationForMultipleUsers(string message, string[] userIds, bool json)
+        [HttpPost]
+        public void SetNotificationForMultipleUsers(string message, int[] userIds, bool json)
         {
-            userIds = userIds.Distinct().ToArray();
-
             foreach (var id in userIds)
             {
-                var intID = int.Parse(id);
-
-                SetNotification(intID, message);
+                SetNotification(id, message);
             }
         }
 

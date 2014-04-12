@@ -16,42 +16,37 @@
 
 
 <div style="text-align: center;">
-<button id="submitButton">שלח התראה</button>
-    </div>
-
-
-
-
+    <button id="submitButton">שלח התראה</button>
+    
+    <button id="checkAll">סמן הכל</button>
+    
+    <button id="uncheckAll">נקה הכל</button>
+</div>
 
 
 <script type="text/javascript">
-    
-    $('#submitButton').click(function () {
+
+    $('#submitButton').click(function() {
         var message = $('#notificationMessage').val().trim();
-        
+
         if (message == '') {
-       
+
             alert("אינך יכול לשמור התראה ריקה");
             return;
         }
 
         var ids = [];
         var inputs = $('#mainData :input :checked');
-        var selected = [];
-        $('#mainData input:checked').each(function () {
-            selected.push($(this).attr('id').replace('"',''));
+        var selected = new Array();
+        $('#mainData input:checked').each(function() {
+            selected.push(parseInt($(this).attr('id')));
         });
 
 
-        var data = {};
-        data.message = message;
-        data.userIds = JSON.stringify(selected);
-        data.json = true;
-        
         $.ajax({
             url: '/Admin/Notifications/SetNotificationForMultipleUsers',
             type: 'POST',
-            data: data,
+            data: $.param({ 'message': message, 'userIds': selected, 'json': true }, true),
             succes: function() {
                 alert('success');
             },
@@ -59,9 +54,19 @@
                 alert('error');
             }
         });
+    });
 
-
-    })
+    $('#checkAll').click(function() {
+        $('#mainData input[type=checkbox]').each(function () {
+            $(this).prop('checked', true);
+        });
+    });
+    
+    $('#uncheckAll').click(function () {
+        $('#mainData input[type=checkbox]').each(function () {
+            $(this).prop('checked', false);
+        });
+    });
 
 
 </script>
