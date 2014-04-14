@@ -1,5 +1,38 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@using Kendo.Mvc.UI
+@model List<GazProjec.Areas.Admin.Models.ComplaintModel>
+
+@{
+    ViewBag.Title = "תלונות";
 }
 
-<h2>Index</h2>
+<h2 style="direction: rtl;">תלונות</h2>
+<div style="direction: rtl;">
+    <a href="~/Admin/Home">אחורה</a>
+</div>
+
+@(
+    Html.Kendo().Grid(Model).Name("ComplaintTable").Columns(col =>
+    {
+        col.Command(c => c.Edit()).Title("פעולות");
+        col.Bound(c => c.ComplaintID).Title("מספר תלונה");
+        col.Bound(c => c.ComplaintDescription).Title("תאור");
+        col.Bound(c => c.CounterID).Title("מספר מונה");
+        col.Bound(c => c.UserID).Title("מספר לקוח");
+        col.Bound(c => c.CreateTime).Title("תאריך");
+        col.Bound(c => c.Disable).Title("מבוטל");
+    }).DataSource(ds => ds.Ajax().Model(m =>
+    {
+        m.Id(a => a.ComplaintID);
+        m.Field(a => a.ComplaintID).Editable(false);
+        m.Field(a => a.CounterID).Editable(false);
+        m.Field(a => a.CreateTime).Editable(false);
+        m.Field(a => a.UserID).Editable(false);
+        m.Field(a => a.ComplaintDescription).Editable(false);
+    }).Read("ComplaintRead", "Complaints", new { Area = "Admin"})
+       .Update("ComplaintUpdate", "Complaints", new { Area = "Admin"}))
+    .Sortable()
+    .Resizable(o => o.Columns(true))
+    .Scrollable()
+    .Filterable()
+    .Editable()
+)
