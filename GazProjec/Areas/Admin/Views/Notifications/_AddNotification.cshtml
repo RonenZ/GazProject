@@ -43,15 +43,22 @@
         });
 
 
+        if (selected.length == 0) {
+            alert('יש לסמן לפחות משתמש אחד');
+            return;
+        }
+
+
         $.ajax({
             url: '/Admin/Notifications/SetNotificationForMultipleUsers',
             type: 'POST',
             data: $.param({ 'message': message, 'userIds': selected, 'json': true }, true),
-            succes: function() {
-                alert('success');
+            success: function () {
+                alert('ההודעה נשלחה');
+                $("#NotificationWindow").data("kendoWindow").close();
             },
             error: function() {
-                alert('error');
+                alert('קרתה תקלה');
             }
         });
     });
