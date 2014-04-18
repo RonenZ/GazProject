@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 
 namespace GazProjec.Areas.Admin.Models
 {
@@ -19,7 +20,7 @@ namespace GazProjec.Areas.Admin.Models
 
         public UserModel() {}
 
-        public UserModel(int userID, GazDBContext db)
+        public UserModel(int userID, GazDbContext db)
         {
             var result = db.Users.Single(o => o.ID == userID);
 

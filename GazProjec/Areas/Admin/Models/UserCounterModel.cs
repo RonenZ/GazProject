@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 
 namespace GazProjec.Areas.Admin.Models
 {
@@ -14,7 +15,7 @@ namespace GazProjec.Areas.Admin.Models
 
         public UserCounterModel(int userID)
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 UserDetails = new UserModel(userID, db);
 

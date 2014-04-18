@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using Kendo.Mvc.Extensions;
@@ -29,7 +30,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDBContext())
+                using (var db = new GazDbContext())
                 {
                     var result = db.UserNotifications.Single(o => o.ID == note.NotificationID);
 
@@ -47,7 +48,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         private List<NotificationModel> GetData()
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 return db.UserNotifications.Select(o => new NotificationModel
                 {
@@ -62,7 +63,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         private void SetNotification(int userID, string message)
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 db.UserNotifications.Add(new UserNotification()
                 {
@@ -97,7 +98,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         private void SetNotificationForAllUsers(string message)
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 var users = db.Users.Where(o => o.RoleID == 1).Select(o => o.ID).ToArray();
 

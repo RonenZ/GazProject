@@ -1,4 +1,5 @@
 ﻿using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 using Gaz.DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace GazProjec.Controllers
         public ActionResult Index()
         {
             var test = WebSecurity.CurrentUserName;
-            var db = new GazDBContext();
+            var db = new GazDbContext();
             var repo = new UserRepository(db);
             var users = repo.GetAll();
 

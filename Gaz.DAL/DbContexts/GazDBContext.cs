@@ -1,20 +1,17 @@
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using Gaz.Models.Models.Mapping;
-using System.Data.Entity.Core.Objects;
-using System;
 using Gaz.Models.Models;
+using Gaz.Models.Models.Mapping;
 
-namespace Gaz.DAL
+namespace Gaz.DAL.DbContexts
 {
-    public partial class GazDBContext : DbContext
+    public partial class GazDbContext : DbContext
     {
-        static GazDBContext()
+        static GazDbContext()
         {
-            Database.SetInitializer<GazDBContext>(null);
+            Database.SetInitializer<GazDbContext>(null);
         }
 
-        public GazDBContext()
+        public GazDbContext()
             : base("Name=GazDBContext")
         {
         }

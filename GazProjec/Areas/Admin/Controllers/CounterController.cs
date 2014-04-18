@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using Kendo.Mvc.Extensions;
@@ -23,7 +24,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         private List<CounterModel> GetCounters()
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 var model = new List<CounterModel>();
                 
@@ -45,7 +46,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDBContext())
+                using (var db = new GazDbContext())
                 {
                     var result = db.Addresses.Single(o => o.ID == counter.AddressID);
 

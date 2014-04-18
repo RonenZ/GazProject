@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Gaz.DAL;
+using Gaz.DAL.DbContexts;
 using GazProjec.Areas.Admin.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
@@ -21,7 +22,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         public List<ComplaintModel> GetData()
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 return db.UserComplaints.Select(o => new ComplaintModel
                 {
@@ -45,7 +46,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDBContext())
+                using (var db = new GazDbContext())
                 {
                     var result = db.UserComplaints.Single(o => o.ID == comp.ComplaintID);
 

@@ -1,11 +1,8 @@
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using Gaz.Models.Models.Mapping;
-using System.Data.Entity.Core.Objects;
-using System;
 using Gaz.Models.Models;
+using Gaz.Models.Models.Mapping;
 
-namespace Gaz.DAL
+namespace Gaz.DAL.DbContexts
 {
     public partial class GazSimpleUsersDbContext : DbContext
     {

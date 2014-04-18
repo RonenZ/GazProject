@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Gaz.DAL.DbContexts;
 using Gaz.DAL.Repositories;
 using Gaz.Models.Models;
 using Gaz.DAL;
@@ -24,7 +25,7 @@ namespace GazProjec.Areas.Admin.Controllers
 
         internal List<UserModel> GetUsers()
         {
-            using (var db = new GazDBContext())
+            using (var db = new GazDbContext())
             {
                 return db.Users.Select(o => new UserModel 
                 { 
@@ -50,7 +51,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDBContext())
+                using (var db = new GazDbContext())
                 {
                     var result = db.Users.Single(o => o.ID == user.ID);
 
@@ -72,7 +73,7 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDBContext())
+                using (var db = new GazDbContext())
                 {
 
                     var entity = db.Users.Single(o => o.ID == user.ID);

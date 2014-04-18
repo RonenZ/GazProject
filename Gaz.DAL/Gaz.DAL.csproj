@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GazCountersDbContext.cs" />
-    <Compile Include="GazSimpleUsersDbContext.cs" />
-    <Compile Include="GazUsersDbContext.cs" />
-    <Compile Include="GazBillingDbContext.cs" />
-    <Compile Include="GazDBContext.cs" />
+    <Compile Include="DbContexts\GazCountersDbContext.cs" />
+    <Compile Include="DbContexts\GazSimpleUsersDbContext.cs" />
+    <Compile Include="DbContexts\GazUsersDbContext.cs" />
+    <Compile Include="DbContexts\GazBillingDbContext.cs" />
+    <Compile Include="DbContexts\GazDBContext.cs" />
     <Compile Include="GenericRepository.cs">
       <SubType>Code</SubType>
     </Compile>
