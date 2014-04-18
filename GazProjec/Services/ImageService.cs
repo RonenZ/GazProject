@@ -17,7 +17,7 @@ namespace GazProjec.Services
         public static Image GenerateBillImage(UserBillModel model)
         {
             var fileName = AppDomain.CurrentDomain.BaseDirectory + "\\Images\\billsImage.png";
-            var valuesAndPositions = new TitleAndPosition[]
+            var valuesAndPositions = new []
             {
                 new TitleAndPosition(model.Name, new Rectangle(475, 117, 200, 50)), 
                 new TitleAndPosition(model.Amount, new Rectangle(650, 360, 200, 50)), 
