@@ -19,7 +19,6 @@ namespace GazProjec.Areas.Admin.Models
         {
         }
 
-
         public AddressModel(Address address)
         {
             AddressID = address.ID;
@@ -31,5 +30,14 @@ namespace GazProjec.Areas.Admin.Models
             Longitude = address.longitude;
         }
 
+        public void ToDbAddress(Address result)
+        {
+            result.CityName = this.CityName;
+            result.StreetName = this.StreetName;
+            result.HouseNumber = this.HouseNumber;
+            result.ApartmentNumber = this.ApartmentNumber;
+            result.latitude = this.Latitude;
+            result.longitude = this.Longitude;
+        }
     }
 }

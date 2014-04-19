@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gaz.DAL;
 using Gaz.DAL.DbContexts;
+using Gaz.DAL.Repositories;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using Kendo.Mvc.Extensions;
@@ -22,46 +23,44 @@ namespace GazProjec.Areas.Admin.Controllers
             return View(GetCounters());
         }
 
-        private List<CounterModel> GetCounters()
-        {
-            using (var db = new GazDbContext())
-            {
-                var model = new List<CounterModel>();
-                
-                foreach (var counter in db.Counters)
-                {
-                    model.Add(new CounterModel(counter));
-                }
-
-                return model;
-            }
-        }
-
         public ActionResult CounterRead([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(GetCounters().ToDataSourceResult(request), JsonRequestBehavior.AllowGet); 
+            return Json(GetCounters().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public ActionResult UsersUpdate([DataSourceRequest]DataSourceRequest request, CounterModel counter)
         {
             if (ModelState.IsValid)
             {
-                using (var db = new GazDbContext())
+                using (var db = new GazCountersDbContext())
                 {
-                    var result = db.Addresses.Single(o => o.ID == counter.AddressID);
+                    var arepo = new AddressesRepository(db);
+                    var address = arepo.GetByID(counter.AddressID);
+                    
+                    if (address == null)
+                        throw new Exception("Address ID cant be found in DB, maybe deleted or data is invalid");
 
-                    result.CityName = counter.AddressData.CityName;
-                    result.StreetName = counter.AddressData.StreetName;
-                    result.HouseNumber = counter.AddressData.HouseNumber;
-                    result.ApartmentNumber = counter.AddressData.ApartmentNumber;
-                    result.latitude = counter.AddressData.Latitude;
-                    result.longitude = counter.AddressData.Longitude;
+                    counter.AddressData.ToDbAddress(address);
+                    arepo.Update(address);
 
-                    db.SaveChanges();
+                    arepo.Commit();
                 }
             }
 
             return Json(new[] { counter }.ToDataSourceResult(request, ModelState));
+        }
+
+        private IEnumerable<CounterModel> GetCounters()
+        {
+            using (var db = new GazCountersDbContext())
+            {
+                var crepo = new CountersRepository(db);
+                var counters = crepo.GetAll("Address").ToList();
+                var model = counters.Select(s => new CounterModel(s));
+
+                return model;
+            }
         }
 
     }

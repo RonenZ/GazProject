@@ -50,9 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContexts\GazBillingDbContext.Views.cs" />
     <Compile Include="DbContexts\GazCountersDbContext.cs" />
+    <Compile Include="DbContexts\GazCountersDbContext.Views.cs" />
     <Compile Include="DbContexts\GazDbContext.Views.cs" />
     <Compile Include="DbContexts\GazSimpleUsersDbContext.cs" />
+    <Compile Include="DbContexts\GazSimpleUsersDbContext.Views.cs" />
     <Compile Include="DbContexts\GazUsersDbContext.cs" />
     <Compile Include="DbContexts\GazBillingDbContext.cs" />
     <Compile Include="DbContexts\GazDBContext.cs" />

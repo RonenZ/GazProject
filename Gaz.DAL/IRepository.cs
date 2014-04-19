@@ -14,5 +14,6 @@ namespace Gaz.DAL
         void Update(T Entity);
         void Delete(T Entity);
         void Delete(int id);
+        void Commit();
     }
 }

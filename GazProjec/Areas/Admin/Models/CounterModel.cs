@@ -10,7 +10,10 @@ namespace GazProjec.Areas.Admin.Models
         public int AddressID { get; set; }
         public AddressModel AddressData { get; set; }
 
-        public CounterModel() { }
+        public CounterModel()
+        {
+            AddressData = new AddressModel();
+        }
 
         public CounterModel(Counter counter)
         {

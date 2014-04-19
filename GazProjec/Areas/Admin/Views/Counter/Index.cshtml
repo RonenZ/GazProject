@@ -1,5 +1,5 @@
 ﻿@using Kendo.Mvc.UI
-@model List<GazProjec.Areas.Admin.Models.CounterModel>
+@model IEnumerable<GazProjec.Areas.Admin.Models.CounterModel>
 
 @{
     ViewBag.Title = "מונים";
@@ -17,17 +17,16 @@
         @(Html.Kendo().Grid(Model).Name("counterTable")
               .Columns(c =>
               {
-                  c.Bound(o => o.CounterID).Title("מספר מונה");
-                  c.Bound(o => o.AddressID).Title("מספר כתובת");
+                  c.Bound(o => o.CounterID).Title("מונה");
                   c.Bound(o => o.AddressData.CityName).Title("עיר");
                   c.Bound(o => o.AddressData.StreetName).Title("רחוב");
                   c.Bound(o => o.AddressData.HouseNumber).Title("מספר בית");
-                  c.Bound(o => o.AddressData.ApartmentNumber).Title("מספר דירה");
+                  c.Bound(o => o.AddressData.ApartmentNumber).Title("דירה");
                   c.Command(o =>
                   {
-                      o.Custom("צפה").Click("moveMap");
-                      o.Edit();
-
+                      o.Edit().Text("עריכה")
+                              .UpdateText("עדכן")
+                              .CancelText("בטל");
                   }).Title("פעולות");
               })
               .HtmlAttributes(new { style = "float:right;overflow: hidden;width:45%; height:500px;" })
@@ -38,8 +37,10 @@
                       m.Field(o => o.CounterID).Editable(false);
                       m.Field(o => o.AddressID).Editable(false);
                   })
-                  .Read("CounterRead", "AdminCounter", new { Area = "Admin" })
-                  .Update("UsersUpdate", "AdminCounter", new { Area = "Admin" }))
+                  .Read("CounterRead", "Counter", new { Area = "Admin" })
+                  .Update("UsersUpdate", "Counter", new { Area = "Admin" }))
+              .Events(e => e.Change("moveMap"))
+              .Selectable()
               .Scrollable()
               .Sortable())
     </div>
@@ -70,7 +71,7 @@
 
     function moveMap(e) {
         e.preventDefault();
-        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var dataItem = this.dataItem(this.select());
         var location = new google.maps.LatLng(dataItem.AddressData.Longitude, dataItem.AddressData.Latitude);
         map.panTo(location);
 

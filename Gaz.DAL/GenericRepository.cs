@@ -95,5 +95,13 @@ namespace Gaz.DAL
             if (entity == null) return; // not found; assume already deleted.
             Delete(entity);
         }
+
+        public virtual void Commit()
+        {
+            if (DbContext == null)
+                throw new ArgumentNullException("DbContext");
+
+            DbContext.SaveChanges();
+        }
     }
 }
