@@ -1,4 +1,32 @@
-﻿@{
+﻿@model List<GazProjec.Areas.Customers.Models.NotificationViewModel>
+
+@{
     ViewBag.Title = "Customer Home";
 }
+
+<div style="direction: rtl;">
+
+    <td>@Html.ActionLink("צריכה אישית", "Index", "Consumption", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
+    <td>@Html.ActionLink("תלונות", "Index", "Complaints", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
+    
+</div>
+
+
+
+<div style="padding-top: 50px;">
+    <hr />    
+</div>
+
+
+<div id="userNotifcations" style="direction: rtl;">
+    <ul style="color: red;">
+        @foreach (var item in Model)
+        {
+            <li>@item.CreateTime : @item.Content</li>     
+        }
+    </ul>
+</div>
+
+
+
 

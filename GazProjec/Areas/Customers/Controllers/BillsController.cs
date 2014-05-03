@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using Gaz.DAL;
-using Gaz.DAL.Repositories;
 using GazProjec.Models;
 using GazProjec.Services;
 
-namespace GazProjec.Areas.Customers
+namespace GazProjec.Areas.Customers.Controllers
 {
     public class BillsController : Controller
     {

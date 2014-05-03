@@ -1,0 +1,76 @@
+﻿@model List<SelectListItem>
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "צריכת מונים";
+}
+
+<div style="direction: rtl;">
+    <h2>צריכת מונים</h2>
+    <a href="~/Customers/Home">אחורה</a>
+</div>
+
+<div id="datePicker" style="direction: rtl;">
+
+    <p>@(ViewBag.ID)</p> 
+    
+    <label style="direction: rtl;">תאריך התחלה:</label>
+    @(Html.Kendo().DatePicker().Name("startDate").Max(DateTime.Now))
+
+    <label style="direction: rtl;">תאריך סיום:</label>
+    @(Html.Kendo().DatePicker().Name("endDate").Max(DateTime.Now))
+    <br />
+    <br />
+    @Html.DropDownList("counterDetails", Model,new { id = "counterDetails"})
+    
+    <br />
+    <br />
+    
+    <button id="submitButton" style="direction: rtl;">הצג</button>
+    <img src="~/Content/Images/ajax-loader.gif" alt="loading" style="display: none;" id="loadingImage"/>
+    
+</div>
+
+<hr/>
+
+
+<div id="tableHolder">
+    
+</div>
+
+
+<script type="text/javascript">
+
+    
+
+
+
+    $('#submitButton').click(function () {
+        $('#loadingImage').show();
+
+        var startTime = $('#startDate').val() + ' 00:00:00';
+        var endTime = $('#endDate').val() + ' 23:59:59';
+
+        while (startTime.indexOf('/') != -1) {
+            startTime = startTime.replace('/','-');
+        }
+        
+        while (endTime.indexOf('/') != -1) {
+            endTime = endTime.replace('/','-');
+        }
+
+        $.ajax({
+            url: 'Consumption/GetConsumptionTable',
+            type: 'GET',
+            data: { 'counterId': $('#counterDetails :selected').val(), 'startTime': startTime, 'endTime': endTime },
+            success: function(e) {
+                $('#tableHolder').html(e.toString());
+                $('#loadingImage').hide();
+            },
+            error: function () {
+                $('#loadingImage').hide();
+                alert('שגיאה');
+            }
+        });
+    })
+
+</script>

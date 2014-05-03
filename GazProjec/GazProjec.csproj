@@ -170,9 +170,14 @@
     <Compile Include="Areas\Admin\Models\CounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserCounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
+    <Compile Include="Areas\Customers\Controllers\ConsumptionController.cs" />
     <Compile Include="Areas\Customers\Controllers\BillsController.cs" />
     <Compile Include="Areas\Customers\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Customers\Models\CounterViewModel.cs" />
+    <Compile Include="Areas\Customers\Models\NotificationViewModel.cs" />
+    <Compile Include="Areas\Customers\Models\UserModel.cs" />
     <Compile Include="Areas\Customers\CustomersAreaRegistration.cs" />
+    <Compile Include="Areas\Customers\Models\CounterReadModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -193,6 +198,7 @@
     <Content Include="Content\Images\1.jpg" />
     <Content Include="Content\Images\2.jpg" />
     <Content Include="Content\Images\3.jpg" />
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\contact_us.png" />
     <Content Include="Content\kendo.compatibility.css" />
     <Content Include="Content\kendo\2013.3.1324\Black\editor.png" />
@@ -472,6 +478,8 @@
     <Content Include="Areas\Admin\Views\Counter\_UserCounter.cshtml" />
     <Content Include="Areas\Customers\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Notifications\_AddNotification.cshtml" />
+    <Content Include="Areas\Customers\Views\Consumption\Index.cshtml" />
+    <Content Include="Areas\Customers\Views\Consumption\_CounterReadTable.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\billsImage.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -739,7 +747,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Customers\Models\" />
     <Folder Include="Areas\Customers\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
