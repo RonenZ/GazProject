@@ -1,0 +1,11 @@
+﻿@using Kendo.Mvc.UI
+@model List<GazProjec.Areas.Customers.Models.CounterReadModel>
+
+
+@Html.Kendo().Grid(Model).Name("grid").Columns(c =>
+{
+    c.Bound(o => o.ReadID).Title("מספר קריאה");
+    c.Bound(o => o.CreateTime).Title("תאריך קריאה");
+    c.Bound(o => o.CounterID).Title("מספר מונה");
+    c.Bound(o => o.ReadAmount).Title("סכום");  
+})
