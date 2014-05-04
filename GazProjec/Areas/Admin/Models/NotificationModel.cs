@@ -7,6 +7,7 @@ namespace GazProjec.Areas.Admin.Models
         public int NotificationID { get; set; }
         public string NotificationDescription { get; set; }
         public int UserID { get; set; }
+        public string UserName { get; set; }
         public DateTime CreateTime { get; set; }
         public bool Disabled { get; set; }
 

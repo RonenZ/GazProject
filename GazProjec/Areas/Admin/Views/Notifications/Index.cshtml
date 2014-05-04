@@ -19,12 +19,12 @@
 .HtmlAttributes(new { style = "text-align:right;"})
     .Columns(c =>
   {
-      c.Bound(o => o.NotificationID).Title("מספר התראה");
-      c.Bound(o => o.NotificationDescription).Title("הודעה");
-      c.Bound(o => o.UserID).Title("מספר משתמש");
-      c.Bound(o => o.CreateTime).Title("תאריך");
-      c.Bound(o => o.Disabled).Title("מבוטל");
-      c.Command(o => o.Edit()).Title("פעולות");
+      c.Bound(o => o.CreateTime).Format("{0:MM/dd/yyyy HH:mm:ss}").Width(150).Title("תאריך");      
+      c.Bound(o => o.NotificationDescription).Width(650).Title("הודעה");
+      c.Bound(o => o.UserName).Title("שם משתמש");      
+      c.Bound(o => o.UserID).Title("מס משתמש");      
+      c.Bound(o => o.NotificationID).Title("מספר התראה");      
+      c.Command(o => o.Edit().Text("עריכה")).Title("פעולות");
   })  
   .DataSource(d => d.Ajax().Read("ReadNotifications", "Notifications", new { Area = "Admin" })
       .Update("NotificationUpdate", "Notifications", new { Area = "Admin" })
@@ -33,7 +33,7 @@
       m.Id(o => o.NotificationID);
       m.Field(o => o.NotificationID).Editable(false);
   }))
-  .Scrollable()
+  .Scrollable(sc => sc.Height(400))
   .Sortable()
   .Resizable(o => o.Columns(true))
       )

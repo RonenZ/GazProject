@@ -13,5 +13,18 @@ namespace Gaz.DAL.Repositories
     {
         public UserNotificationRepository(DbContext context) : base(context) { }
 
+
+        public void AddNotificationForMultipleUsers(int[] userIds, string message)
+        {
+            var notifs = userIds.Distinct().Select(s => new UserNotification()
+            {
+                    UserID = s,
+                    CreateTime = DateTime.Now,
+                    Disabled = false,
+                    NotificationDescription = message
+            });
+
+            DbSet.AddRange(notifs);
+        }
     }
 }

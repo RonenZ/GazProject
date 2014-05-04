@@ -9,6 +9,7 @@ using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using Gaz.DAL.Repositories;
 
 namespace GazProjec.Areas.Admin.Controllers
 {
@@ -55,6 +56,7 @@ namespace GazProjec.Areas.Admin.Controllers
                     NotificationID = o.ID,
                     NotificationDescription = o.NotificationDescription,
                     UserID = o.UserID,
+                    UserName =  o.User.FirstName + " " + o.User.LastName,
                     CreateTime = o.CreateTime,
                     Disabled = o.Disabled
                 }).ToList();
@@ -90,9 +92,11 @@ namespace GazProjec.Areas.Admin.Controllers
         [HttpPost]
         public void SetNotificationForMultipleUsers(string message, int[] userIds, bool json)
         {
-            foreach (var id in userIds)
+            using (var db = new GazDbContext())
             {
-                SetNotification(id, message);
+                var repo = new UserNotificationRepository(db);
+                repo.AddNotificationForMultipleUsers(userIds, message);
+                repo.Commit();
             }
         }
 
