@@ -1,0 +1,52 @@
+﻿@using System.Web.UI.WebControls
+@model List<SelectListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="direction: rtl;"> תלונות ומשובים</h2>
+
+<div style="direction: rtl; width: 800px; margin-left: auto; margin-right: auto; ">
+    <p>בדף זה ניתן לדווח על תקלות במונים או תקלות באופן כללי. </p>
+    <p>החברה תשמח לעמוד לשירותכם בכל מקרה של תלונה ולעשות את מירב המאמצים כדי לפתור אותה. </p>
+    
+    <div>
+        @Html.Label("בחר מונה:")
+        @Html.DropDownList("counterList", Model, new { id = "counterList"})
+    </div>
+    <br />
+    <br />
+<textarea id="complaintText" style="width: 720px; height: 180px; border: black solid 1px;">
+
+</textarea>
+    
+ <input type="button" id="submitButton" value="שלח" style="width: 100px; margin-left: auto; margin-right: auto;"/>   
+</div>
+
+<div>
+
+    <img src="~/Content/Images/feedback.png" alt="feedback" style="width: 300px;"/>
+    
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    $('#submitButton').click(function() {
+        $.ajax({
+            url: '/Customers/Complaints/SubmitComplaint',
+            type: 'POST',
+            data: { 'desc': $('#complaintText').val(), 'counterId': $('#counterList :selected').val() },
+            success: function() {
+                alert('המשוב הועבר בהצלחה');
+                document.location.reload();
+            }
+        });
+    });
+
+    
+
+</script>
