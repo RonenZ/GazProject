@@ -8,6 +8,7 @@ using Gaz.DAL.Repositories;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using GazProjec.Areas.Customers.Models;
+using Microsoft.Ajax.Utilities;
 using WebMatrix.WebData;
 
 namespace GazProjec.Areas.Customers.Controllers
@@ -36,19 +37,59 @@ namespace GazProjec.Areas.Customers.Controllers
             using (var db = new GazDbContext())
             {
                 var repo = new CountersRepository(db);
-                var counterReads = repo.GetCounterReadsPerPeriod(counterId, startTime, endTime).ToList();
+                var counterReads = repo.GetCounterReadsPerPeriod(counterId, startTime, endTime).OrderByDescending(o => o.CreateTime).ToList();
 
-                var readsPerDayGroup = counterReads.GroupBy(g => g.CreateTime.ToString("01/MM/yyyy")).OrderByDescending(o => o.Key);
-
-                return readsPerDayGroup.Select(readsPerDay => new CounterReadModel()
+               var list = counterReads.Select(o => new CounterReadModel
                 {
                     CounterID = counterId,
-                    CreateTime = DateTime.Parse(readsPerDay.Key),
-                    Date = DateTime.Parse(readsPerDay.Key).ToString("dd/MM"),
-                    ReadAmount = readsPerDay.Sum(s => s.ReadAmount),
-                    ReadID = 0
+                    CreateTime = o.CreateTime,
+                    ReadAmount = o.ReadAmount,
+                    ReadID = o.ID
                 }).ToList();
+                
+                ViewBag.Overroll = GetChartModel(list.OrderBy(o => o.CreateTime).ToList());
+
+                return list;
             }
+        }
+
+        private ChartModel[] GetChartModel(List<CounterReadModel> model)
+        {
+            if (model != null && model.Count > 0)
+            {
+                var list = new List<ChartModel>();
+                var k = 0;
+                var startDate = model[0].CreateTime.Day;
+                
+                list.Add(new ChartModel
+                {
+                    Date = model[0].CreateTime,
+                    Value = model[0].ReadAmount
+                });
+
+                for (var i = 1; i < model.Count; i++)
+                {
+                    if (startDate != model[i].CreateTime.Day)
+                    {
+                        startDate = model[i].CreateTime.Day;
+                        k++;
+                        
+                        list.Add(new ChartModel
+                        {
+                            Date = model[i].CreateTime,
+                            Value = list[k - 1].Value + model[i].ReadAmount
+                        });
+                    }
+                    else
+                    {
+                        list[k].Value += model[i].ReadAmount;
+                    }
+                }
+
+                return list.OrderByDescending(o => o.Date).ToArray();
+            }
+
+            return null;
         }
 
         private IEnumerable<SelectListItem> GetListOfCounters(string userName)

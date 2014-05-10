@@ -1,11 +1,34 @@
-﻿@using Kendo.Mvc.UI
+﻿@using GazProjec.Areas.Customers.Models
+@using Kendo.Mvc.UI
 @model List<GazProjec.Areas.Customers.Models.CounterReadModel>
 
+@{
+    var chartModel = (ChartModel[])ViewBag.Overroll;
+    var arr = chartModel.Select(a => a.Value).ToArray();
+}
 
-@(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.Date))
-      .Series(o => o.Column(a => a.ReadAmount))
+@(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.CreateTime))
+      .Series(o => o.Column(a => a.ReadAmount).Aggregate(ChartSeriesAggregate.Sum).Name("צריכה יומית"))
       .Tooltip(true)
-      .Title("צריכה תקופתית"))
+      .Title("צריכה תקופתית")
+       .ChartArea(chartArea => chartArea
+          .Background("transparent"))
+          .HtmlAttributes(new { id = "single", style = "width: 100%;"})
+          
+          )
+@(Html.Kendo().Chart(chartModel).Name("chart1").CategoryAxis(o => o.Categories(c => c.Date))
+      .Series(o => o.Column(a => a.Value).Name("צריכה מצטברת").Color("Blue"))
+      .Tooltip(true)
+      .Legend(true)
+      .Title("צריכה תקופתית")
+      .ChartArea(chartArea => chartArea
+          .Background("transparent"))
+          .HtmlAttributes(new { id = "overoll", style = "display: none;width: 87%;" })
+          
+          )
+
+<div style="direction: rtl;"><button id="change">שנה תצוגה</button></div>
+
 
 <br />
 
@@ -21,3 +44,20 @@
     c.Bound(o => o.CounterID).Title("מספר מונה");
     c.Bound(o => o.ReadAmount).Title("סכום");  
 })
+
+
+<script type="text/javascript">
+    var x = 1;
+
+    $('#change').click(function() {
+        if (x == 1) {
+            x = 2;
+            $('#single').hide();
+            $('#overoll').show();
+        } else {
+            x = 1;
+            $('#single').show();
+            $('#overoll').hide();
+        }
+    });
+</script>

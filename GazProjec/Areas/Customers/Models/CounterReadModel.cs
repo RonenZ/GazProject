@@ -7,7 +7,6 @@ namespace GazProjec.Areas.Customers.Models
       public int ReadID { get; set; }
       public int CounterID  { get; set; }
       public DateTime CreateTime { get; set; }
-      public string Date { get; set; }
       public float ReadAmount { get; set; }
     }
 }
