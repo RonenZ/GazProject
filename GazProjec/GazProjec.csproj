@@ -170,6 +170,7 @@
     <Compile Include="Areas\Admin\Models\CounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserCounterModel.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
+    <Compile Include="Areas\Customers\Controllers\ComplaintsController.cs" />
     <Compile Include="Areas\Customers\Controllers\ConsumptionController.cs" />
     <Compile Include="Areas\Customers\Controllers\BillsController.cs" />
     <Compile Include="Areas\Customers\Controllers\HomeController.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Content\Images\3.jpg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\contact_us.png" />
+    <Content Include="Content\Images\feedback.png" />
     <Content Include="Content\Images\flame.png" />
     <Content Include="Content\Images\HIT.gif" />
     <Content Include="Content\kendo.compatibility.css" />
@@ -486,6 +488,7 @@
     <Content Include="Areas\Customers\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Customers\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customers\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Customers\Views\Complaints\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\billsImage.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />

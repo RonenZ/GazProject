@@ -35,4 +35,14 @@
     .Scrollable()
     .Filterable()
     .Editable()
-)
+    .Events(events => events.Save("EditRow"))
+      )
+
+
+<script type="text/javascript">
+
+    function EditRow() {
+        var grid = $("#ComplaintTable").data("kendoGrid");
+        grid.dataSource.read();
+    }
+</script>

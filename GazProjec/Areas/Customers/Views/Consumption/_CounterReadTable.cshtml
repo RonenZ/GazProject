@@ -2,6 +2,18 @@
 @model List<GazProjec.Areas.Customers.Models.CounterReadModel>
 
 
+@(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.CreateTime))
+      .Series(o => o.Column(a => a.ReadAmount).Aggregate(ChartSeriesAggregate.Sum))
+      .Tooltip(true)
+      .Title("צריכה תקופתית"))
+
+<br />
+
+<hr/>
+
+<br />
+
+
 @Html.Kendo().Grid(Model).Name("grid").Columns(c =>
 {
     c.Bound(o => o.ReadID).Title("מספר קריאה");
