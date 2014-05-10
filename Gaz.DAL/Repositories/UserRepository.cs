@@ -19,16 +19,30 @@ namespace Gaz.DAL.Repositories
         /// <summary>
         /// return user details using sp
         /// </summary>
-        public int GetUserRoleByUsername(string username)
+        public int GetUserIdByUsername(string username)
         {
             //if (include != null)
             //{
             //    return this.DbSet.Include(include).FirstOrDefault(f => f.Username.Equals(username));
             //}
             var user = this.DbSet.FirstOrDefault(f => f.Username.Equals(username));
-            if(user == null) return 0;
+            return user == null ? 0 : user.ID;
+        }
 
-            return user.RoleID;
+        /// <summary>
+        /// return user details using sp
+        /// </summary>
+        public int GetUserRoleByUsername(string username)
+        {
+            var user = this.DbSet.FirstOrDefault(f => f.Username.Equals(username));
+            return user == null ? 0 : user.RoleID;
+        }
+
+        public IEnumerable<Counter> GetCountersByUserName(string userName)
+        {
+            var user = DbSet.SingleOrDefault(s => s.Username == userName);
+
+            return user == null ? new List<Counter>() : user.User_Counters;
         }
 
         /// <summary>
@@ -50,12 +64,12 @@ namespace Gaz.DAL.Repositories
 
         #region Stored Procedures
 
-        protected virtual User usp_GetUserDetails(Nullable<int> userID)
+        protected virtual User usp_GetUserDetails(int? userId)
         {
-            var userIDP = new SqlParameter("@userID", userID);
+            var userIdp = new SqlParameter("@userID", userId);
 
             return DbContext.Database
-                            .SqlQuery<User>("usp_GetUserDetails @userID", userIDP)
+                            .SqlQuery<User>("usp_GetUserDetails @userID", userIdp)
                             .SingleOrDefault();
         }
 

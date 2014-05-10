@@ -18,38 +18,41 @@ namespace Gaz.DAL.Repositories
         /// <summary>
         /// returns all of user counters info by userid, using sp
         /// </summary>
-        public IEnumerable<Counter> GetCountersByUserId(int userID)
+        public IEnumerable<Counter> GetCountersByUserId(int userId)
         {
-            return this.usp_GetCountersForUser(userID);
+            return this.usp_GetCountersForUser(userId);
         }
 
         /// <summary>
         /// returns counter reads of a counter per period, using sp
         /// </summary>
-        public IEnumerable<CounterRead> GetCounterReadsPerPeriod(int counterID, DateTime startTime, DateTime endTime)
+        public IEnumerable<CounterRead> GetCounterReadsPerPeriod(int counterId, DateTime startTime, DateTime endTime)
         {
-            return this.usp_GetCounterReadPerPeriod(counterID, startTime, endTime);
+            return DbContext.Set<CounterRead>()
+                .Where(w => w.CounterID == counterId && w.CreateTime >= startTime && w.CreateTime <= endTime);
+            //return this.usp_GetCounterReadPerPeriod(counterId, startTime, endTime);
         }
 
         #region Stored Procedures
 
-        protected virtual IEnumerable<Counter> usp_GetCountersForUser(Nullable<int> usrID)
+        protected virtual IEnumerable<Counter> usp_GetCountersForUser(int? usrId)
         {
-            var usrIDP = new SqlParameter("@usrID", usrID);
+            var usrIdp = new SqlParameter("@usrID", usrId);
 
             return DbContext.Database
-                            .SqlQuery<Counter>("usp_GetCountersForUser @usrID", usrIDP);
+                            .SqlQuery<Counter>("usp_GetCountersForUser @usrID", usrIdp);
         }
 
 
-        public virtual IEnumerable<CounterRead> usp_GetCounterReadPerPeriod(Nullable<int> counterID, Nullable<System.DateTime> startTime, Nullable<System.DateTime> endTime)
+        public virtual IEnumerable<CounterRead> usp_GetCounterReadPerPeriod(int? counterId, DateTime? startTime, DateTime? endTime)
         {
-            var counterIDP = new SqlParameter("@CounterID", counterID);
+            var counterIdp = new SqlParameter("@CounterID", counterId);
             var startTimeP = new SqlParameter("@StartTime", startTime);
             var endTimeP = new SqlParameter("@EndTime", endTime);
 
             return DbContext.Database
-                            .SqlQuery<CounterRead>("usp_GetCounterReadPerPeriod @CounterID, @StartTime, @EndTime", counterIDP, startTime, endTime);
+                            .SqlQuery<CounterRead>("usp_GetCounterReadPerPeriod @CounterID, @StartTime, @EndTime", counterIdp, startTimeP, endTimeP)
+                            .ToList();
         }
 
         #endregion

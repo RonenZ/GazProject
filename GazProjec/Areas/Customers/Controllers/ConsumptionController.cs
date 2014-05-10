@@ -8,6 +8,7 @@ using Gaz.DAL.Repositories;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using GazProjec.Areas.Customers.Models;
+using WebMatrix.WebData;
 
 namespace GazProjec.Areas.Customers.Controllers
 {
@@ -18,7 +19,7 @@ namespace GazProjec.Areas.Customers.Controllers
 
         public ActionResult Index()
         {
-            return View(GetListOfCounters(User.Identity.Name));
+            return View(this.GetListOfCounters(User.Identity.Name));
         }
 
         //GET: 
@@ -34,38 +35,34 @@ namespace GazProjec.Areas.Customers.Controllers
         {
             using (var db = new GazDbContext())
             {
-                var counterReads =  db.CounterReads.ToList().Where(
-                    o => o.CounterID == counterId && o.CreateTime >= startTime && o.CreateTime <= endTime);
+                var repo = new CountersRepository(db);
+                var counterReads = repo.GetCounterReadsPerPeriod(counterId, startTime, endTime).ToList();
 
-                return counterReads.Select(o => new CounterReadModel
+                var readsPerDayGroup = counterReads.GroupBy(g => g.CreateTime.ToString("01/MM/yyyy")).OrderByDescending(o => o.Key);
+
+                return readsPerDayGroup.Select(readsPerDay => new CounterReadModel()
                 {
-                    CounterID = o.CounterID,
-                    CreateTime = o.CreateTime,
-                    ReadAmount = o.ReadAmount,
-                    ReadID = o.ID
-                }).OrderByDescending(o => o.CreateTime).ToList();
+                    CounterID = counterId,
+                    CreateTime = DateTime.Parse(readsPerDay.Key),
+                    Date = DateTime.Parse(readsPerDay.Key).ToString("dd/MM"),
+                    ReadAmount = readsPerDay.Sum(s => s.ReadAmount),
+                    ReadID = 0
+                }).ToList();
             }
         }
 
-        private List<SelectListItem> GetListOfCounters(string userName)
+        private IEnumerable<SelectListItem> GetListOfCounters(string userName)
         {
             using (var db = new GazDbContext())
             {
-                var user = db.Users.First(o => o.Username == userName);
+                var urepo = new UserRepository(db);
+                var counters = urepo.GetCountersByUserName(userName);
 
-                var counters = db.Users.Find(user.ID).User_Counters.ToList();
-                                var list = new List<SelectListItem>();
-
-
-                foreach (var counter in counters)
+                return counters.Select(counter => new SelectListItem()
                 {
-                    var counterView = new SelectListItem();
-                    counterView.Value = counter.ID.ToString(CultureInfo.InvariantCulture);
-                    counterView.Text = CounterDetails(counter);
-                    list.Add(counterView);
-                }
-
-                return list;
+                    Value = counter.ID.ToString(CultureInfo.InvariantCulture), 
+                    Text = CounterDetails(counter)
+                }).ToList();
             }
         }
 
@@ -74,8 +71,5 @@ namespace GazProjec.Areas.Customers.Controllers
             return string.Format("{0} {1} {2}, {3}", counter.Address.CityName, counter.Address.StreetName, counter.Address.HouseNumber,
                 counter.Address.ApartmentNumber);
         }
-
-
-
     }
 }

@@ -2,8 +2,8 @@
 @model List<GazProjec.Areas.Customers.Models.CounterReadModel>
 
 
-@(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.CreateTime))
-      .Series(o => o.Column(a => a.ReadAmount).Aggregate(ChartSeriesAggregate.Sum))
+@(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.Date))
+      .Series(o => o.Column(a => a.ReadAmount))
       .Tooltip(true)
       .Title("צריכה תקופתית"))
 
