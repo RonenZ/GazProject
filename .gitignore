@@ -28,3 +28,4 @@ Gaz.Models/bin/Debug/Gaz.Models.dll
 Gaz.Models/obj/Debug/Gaz.Models.pdb
 *.dll
 *.dll
+*.cache
