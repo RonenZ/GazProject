@@ -64,7 +64,8 @@ namespace GazProjec.Areas.Customers.Controllers
         public ActionResult GetBillImage(int counterId, string dateStr)
         {
             UserBillModel userBillModel;
-            var date = DateTime.Parse(dateStr);
+
+            var date = DateTime.ParseExact(dateStr, "dd/MM/yyyy", CultureInfo.CurrentCulture);
             using (var db = new GazDbContext())
             {
                 var repo = new BillsRepository(db);
