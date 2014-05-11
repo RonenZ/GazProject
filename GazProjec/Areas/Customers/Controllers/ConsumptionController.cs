@@ -8,6 +8,7 @@ using Gaz.DAL.Repositories;
 using Gaz.Models.Models;
 using GazProjec.Areas.Admin.Models;
 using GazProjec.Areas.Customers.Models;
+using GazProjec.Services;
 using Microsoft.Ajax.Utilities;
 using WebMatrix.WebData;
 
@@ -101,16 +102,12 @@ namespace GazProjec.Areas.Customers.Controllers
 
                 return counters.Select(counter => new SelectListItem()
                 {
-                    Value = counter.ID.ToString(CultureInfo.InvariantCulture), 
-                    Text = CounterDetails(counter)
+                    Value = counter.ID.ToString(CultureInfo.InvariantCulture),
+                    Text = CounterUiSerivce.GetDetails(counter)
                 }).ToList();
             }
         }
 
-        private string CounterDetails(Counter counter)
-        {
-            return string.Format("{0} {1} {2}, {3}", counter.Address.CityName, counter.Address.StreetName, counter.Address.HouseNumber,
-                counter.Address.ApartmentNumber);
-        }
+
     }
 }

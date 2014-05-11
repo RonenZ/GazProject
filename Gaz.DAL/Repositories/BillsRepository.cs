@@ -31,26 +31,36 @@ namespace Gaz.DAL.Repositories
             return this.usp_GetOpenBillsForCounter(counterID);
         }
 
+
+        /// <summary>
+        /// returns bill by counter and date
+        /// </summary>
+        public UserBill GetBillByDate(int counterId, DateTime date)
+        {
+            var nextMonth = date.AddMonths(1);
+            return DbSet.FirstOrDefault(f => f.CreateTime >= date && f.CreateTime <= nextMonth);
+        }
+
         /// <summary>
         /// returns all bills for counter
         /// </summary>
-        public IEnumerable<UserBill> GetAllBillsByCounterID(int counterID)
+        public IEnumerable<UserBill> GetAllBillsByCounterId(int counterID)
         {
             return this.usp_GetBillForCounter(counterID);
         }
 
         #region Stored Procedures
 
-        protected virtual IEnumerable<UserBill> usp_GetBillForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetBillForCounter(int? counterId)
         {
-            var counterIDP = new SqlParameter("@counterID", counterID);
+            var counterIdp = new SqlParameter("@counterID", counterId);
 
             return DbContext.Database
-                            .SqlQuery<UserBill>("usp_GetBillForCounter @counterID", counterIDP);
+                            .SqlQuery<UserBill>("usp_GetBillForCounter @counterID", counterIdp);
         }
 
 
-        protected virtual IEnumerable<UserBill> usp_GetLastBillForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetLastBillForCounter(int? counterID)
         {
             var counterIDP = new SqlParameter("@counterID", counterID);
 
@@ -58,12 +68,12 @@ namespace Gaz.DAL.Repositories
                             .SqlQuery<UserBill>("usp_GetLastBillForCounter @counterID", counterIDP);
         }
 
-        protected virtual IEnumerable<UserBill> usp_GetOpenBillsForCounter(Nullable<int> counterID)
+        protected virtual IEnumerable<UserBill> usp_GetOpenBillsForCounter(int? counterID)
         {
-            var counterIDP = new SqlParameter("@counterID", counterID);
+            var counterIdp = new SqlParameter("@counterID", counterID);
 
             return DbContext.Database
-                            .SqlQuery<UserBill>("usp_GetOpenBillsForCounter @counterID", counterIDP);
+                            .SqlQuery<UserBill>("usp_GetOpenBillsForCounter @counterID", counterIdp);
         }
 
         #endregion

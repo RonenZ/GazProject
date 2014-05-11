@@ -1,5 +1,72 @@
 ﻿@{
-    ViewBag.Title = "Customers Bills";
+    ViewBag.Title = "חשבונות";
 }
+@using Kendo.Mvc.UI
 
-<h2>Customers Bills</h2>
+<div style="direction: rtl;">
+    <h2>חשבונות</h2>
+    <a href="~/Customers/Home">אחורה</a>
+
+
+    <p>
+        <label for="counters">מונים:</label>
+        @(Html.Kendo().DropDownList()
+                      .Name("counters")
+              .HtmlAttributes(new { style = "width:300px" })
+              .OptionLabel("Select counter...")
+              .DataTextField("Address")
+                      .DataValueField("CounterID")
+              .DataSource(source => source.Read(read => read.Action("GetCascadeCounters", "Bills")))
+        )
+    </p>
+    <p>
+        <label for="months">חודשים:</label>
+        @(Html.Kendo().DropDownList()
+              .Name("months")
+              .HtmlAttributes(new { style = "width:300px" })
+              .OptionLabel("Select month...")
+              .DataTextField("MonthFormatted")
+              .DataValueField("Date")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetCascadeBillsMonths", "Bills")
+                          .Data("filterMonths");
+                  })
+                      .ServerFiltering(true);
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("counters")
+              )
+    </p>
+    <p>
+        <button id="getBillingImage">
+            חשבן אותי!
+        </button>
+    </p>
+    
+    <div id="billing-result-div">
+        <img id="billing-img"/>
+    </div>
+</div>
+<script>
+    function filterMonths() {
+        return {
+            counterId: $("#counters").val()
+        };
+    }
+
+    $('#getBillingImage').click(function () {
+        $('#billing-img').hide();
+        $('#billing-img').attr('src', 'Bills/GetBillImage?counterId=' + $("#counters").val() + '&dateStr=' + $("#months").val());
+        $('#billing-img').fadeIn(1500);
+        //$.get('Bills/GetBillImage', { counterId: $("#counters").val(), dateStr: $("#months").val() }, function (data) {
+
+        //    console.log(data);
+
+        //});
+    });
+
+</script>

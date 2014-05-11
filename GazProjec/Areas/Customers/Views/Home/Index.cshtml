@@ -2,21 +2,22 @@
 
 
 @{
-    ViewBag.Title = "Customer Home";
-    
+    ViewBag.Title = "החשבון שלי";
+
 }
 
-<div style="direction: rtl;">
-
-    <td>@Html.ActionLink("צריכה אישית", "Index", "Consumption", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
-    <td>@Html.ActionLink("תלונות", "Index", "Complaints", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
-    
+<div id="mainPanel" class='admin-home' style="direction:rtl;padding-top:5%;">
+    <table style="font-size:30px; margin: 0 auto;">
+        <tr>
+            <td>@Html.ActionLink("צריכה אישית", "Index", "Consumption", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
+            <td>@Html.ActionLink("חשבוניות", "Index", "Bills", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
+            <td>@Html.ActionLink("תלונות", "Index", "Complaints", new { Area = "Customers" }, new { @class = "k-button k-button-icontext" })</td>
+        </tr>
+    </table>
 </div>
 
-
-
-<div style="padding-top: 50px;">
-    <hr />    
+<div style="padding: 30px 0 20px;">
+    <hr />
 </div>
 
 
@@ -24,7 +25,7 @@
     <ul style="color: red;">
         @foreach (var item in Model)
         {
-            <li>@item.CreateTime : @item.Content</li>     
+            <li>@item.CreateTime : @item.Content</li>
         }
     </ul>
 </div>
