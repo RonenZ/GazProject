@@ -160,6 +160,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ComplaintsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CounterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CounterUserReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
@@ -491,6 +492,9 @@
     <Content Include="Areas\Customers\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Customers\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Customers\Views\Complaints\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Counter\_EditCounterView.cshtml" />
+    <Content Include="Areas\Admin\Views\Counter\AddCounterView.cshtml" />
+    <Content Include="Areas\Admin\Views\CounterUserReference\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\billsImage.png" />
     <Content Include="Scripts\jquery-1.8.2.js" />

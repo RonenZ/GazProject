@@ -25,6 +25,7 @@
               c.Bound(p => p.Username).Title("שם משתמש");
               c.Bound(p => p.Password).Title("סיסמה");
               c.Bound(p => p.PhoneNumber).Title("טלפון");
+              c.Bound(p => p.RoleID).Title("סיווג");
               c.Command(p => 
               { 
                   p.Edit().Text("עדכון");
@@ -32,6 +33,7 @@
                   p.Custom("מונים").Click("getCounters");
               }).Title("פעולות");
           })
+          .ToolBar(tb => tb.Create().Text("הוסף משתמש"))
           .DataSource(o => o.Ajax()
               .Model(p => 
               { 
@@ -40,7 +42,8 @@
               })
               .Read("UsersRead", "Users", new { Area = "Admin" })
               .Update("UsersUpdate", "Users", new { Area = "Admin" })
-              .Destroy("RemoveUser", "Users", new { Area = "Admin" }))
+              .Destroy("RemoveUser", "Users", new { Area = "Admin" })
+              .Create("AddNewUser","Users", new { Area = "Admin" }))
           .Editable(editable => editable.Mode(GridEditMode.InLine))
           .Sortable()
           .Scrollable()

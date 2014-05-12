@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "AddCounterView";
+}
+
+<div style="direction: rtl">
+    <h2>הוספת מונה</h2>
+
+    <fieldset>
+        <legend>הוסף מונה</legend>
+        
+        <label>עיר:</label>
+        <input type="text" id="cityName" />
+        
+        <label>רחוב:</label>
+        <input type="text" id="streetName" />
+        
+        <label>מספר בית:</label>
+        <input type="text" id="houseNumber" />
+        
+        <label>מספר דירה:</label>
+        <input type="text" id="apartmentNumber" />
+    
+        <br/>
+        <button id="submitButton">הוסף</button>
+
+    </fieldset>
+</div>
+
+
+<script type="text/javascript">
+
+    $('#submitButton').click(getLatLong);
+
+    function getLatLong() {
+        var geo = new google.maps.Geocoder;
+
+        var cityName = $('#cityName').val();
+        var streetName = $('#streetName').val();
+        var houseNumber = $('#houseNumber').val();
+        var apartmentNumber = $('#apartmentNumber').val();
+
+        var address = 'ישראל' + ' ' + cityName + ' ' + streetName + ' ' + houseNumber;
+
+        geo.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var result = results[0].geometry.location;
+                var longitude = result.lat();                
+                var latitude = result.lng();
+
+                $.ajax({
+                    url: '/Counter/AddCounter',
+                    type: 'POST',
+                    data: { 'cityName': cityName, 'streetName': streetName, 'houseNumber': houseNumber, 'apartmentNumber': apartmentNumber, 'longitude': longitude, 'latitude': latitude },
+                    success: function(e) {
+                        alert(e);
+                        location.reload();
+                    }
+                });
+
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+            return null;
+        });
+    }
+</script>

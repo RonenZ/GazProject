@@ -93,6 +93,27 @@ namespace GazProjec.Areas.Admin.Controllers
             return PartialView("~/Areas/Admin/Views/Counter/_UserCounter.cshtml", model);
         }
 
+        public ActionResult AddNewUser([DataSourceRequest]DataSourceRequest request, UserModel model)
+        {
+            using (var db = new GazDbContext())
+            {
+                db.Users.Add(new User
+                {
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Password = model.Password,
+                    RoleID = model.RoleID,
+                    Username = model.Username,
+                });
+
+                db.SaveChanges();
+            }
+
+            return Json(new[] { model }.ToDataSourceResult(request, ModelState));
+        }
+
     }
 
 

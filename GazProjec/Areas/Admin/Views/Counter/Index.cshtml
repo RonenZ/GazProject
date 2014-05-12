@@ -9,25 +9,28 @@
 
 <div style="direction: rtl;">
     <a href="~/Admin/Home">אחורה</a>
+</div >
+
+<div style="direction: rtl; margin-left: 95%; margin-top: 5px; margin-bottom: 3px;" class="k-button">
+    @Html.ActionLink("הוסף מונה", "AddCounterView", "Counter")
 </div>
 
 <div id="contentHolder">
+    
 
     <div id="mainTable">
         @(Html.Kendo().Grid(Model).Name("counterTable")
               .Columns(c =>
               {
                   c.Bound(o => o.CounterID).Title("מונה");
+                  c.Bound(o => o.AddressID).Hidden();
                   c.Bound(o => o.AddressData.CityName).Title("עיר");
                   c.Bound(o => o.AddressData.StreetName).Title("רחוב");
                   c.Bound(o => o.AddressData.HouseNumber).Title("מספר בית");
                   c.Bound(o => o.AddressData.ApartmentNumber).Title("דירה");
-                  c.Command(o =>
-                  {
-                      o.Edit().Text("עריכה")
-                              .UpdateText("עדכן")
-                              .CancelText("בטל");
-                  }).Title("פעולות");
+                  c.Command(o => o.Edit().Text("עריכה")
+                      .UpdateText("עדכן")
+                      .CancelText("בטל")).Title("פעולות");
               })
               .HtmlAttributes(new { style = "float:right;overflow: hidden;width:45%; height:500px;" })
               .DataSource(ds => ds.Ajax()
@@ -36,10 +39,16 @@
                       m.Id(o => o.CounterID);
                       m.Field(o => o.CounterID).Editable(false);
                       m.Field(o => o.AddressID).Editable(false);
+                      m.Field(o => o.AddressData.CityName);
                   })
                   .Read("CounterRead", "Counter", new { Area = "Admin" })
                   .Update("UsersUpdate", "Counter", new { Area = "Admin" }))
-              .Events(e => e.Change("moveMap"))
+              .Events(e =>
+              {
+                  e.Change("moveMap");
+                  e.Save("sendLocation");
+
+              })
               .Selectable()
               .Scrollable()
               .Sortable())
@@ -55,10 +64,6 @@
     var markerArray = [];
     var size = 0;
 
-    $(document).ready(function () {
-        initialize();
-    });
-
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng(32.0165284, 34.745762),
@@ -67,6 +72,63 @@
 
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+    }
+
+    $(document).ready(function () {
+        initialize();
+    });
+
+    function sendLocation(e) {
+        var obj = {};
+        obj.AddressData = {};
+        var dataItem = this.dataItem(this.select());
+
+        obj.CounterID = dataItem.CounterID;
+        obj.AddressID = dataItem.AddressID;
+        obj.AddressData.AddressID = dataItem.AddressID;
+        obj.AddressData.CityName = dataItem.AddressData.CityName;
+        obj.AddressData.StreetName = dataItem.AddressData.StreetName;
+        obj.AddressData.HouseNumber = dataItem.AddressData.HouseNumber;
+        obj.AddressData.ApartmentNumber = dataItem.AddressData.ApartmentNumber;
+        
+        var address ='ישראל' + ' ' + obj.AddressData.CityName + ' ' + obj.AddressData.StreetName + ' ' + obj.AddressData.HouseNumber;
+        
+        var geo = new google.maps.Geocoder;
+
+        geo.geocode({ 'address': address }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                obj.AddressData.Latitude = results[0].geometry.location.lng();
+                obj.AddressData.Longitude = results[0].geometry.location.lat();
+
+                $.ajax({
+                    url: '/Counter/UsersUpdate',
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    traditional: true,
+                    data: JSON.stringify(obj),
+                    success: function() {
+                        $("#counterTable").data("kendoGrid").dataSource.read();
+                    }
+                });
+            }
+        });
+
+
+    }
+        
+
+    function getLatLong(address) {
+        var geo = new google.maps.Geocoder;
+
+        geo.geocode({ 'address': address }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var result = results[0].geometry.location;
+                return result;
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+            return null;
+        });
     }
 
     function moveMap(e) {

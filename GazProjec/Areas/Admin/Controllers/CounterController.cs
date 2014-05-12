@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,7 +30,7 @@ namespace GazProjec.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult UsersUpdate([DataSourceRequest]DataSourceRequest request, CounterModel counter)
+        public ActionResult UsersUpdate(CounterModel counter)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +49,40 @@ namespace GazProjec.Areas.Admin.Controllers
                 }
             }
 
-            return Json(new[] { counter }.ToDataSourceResult(request, ModelState));
+            return null;
+        }
+
+        public ActionResult AddCounterView()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCounter(string cityName, string streetName, int houseNumber, int apartmentNumber, float longitude, float latitude)
+        {
+            using (var db = new GazDbContext())
+            {
+                var result = db.Addresses.Add(new Address
+                {
+                    ApartmentNumber = apartmentNumber,
+                    CityName = cityName,
+                    HouseNumber = houseNumber,
+                    StreetName = streetName,
+                    latitude = latitude,
+                    longitude = longitude,
+                });
+
+                db.SaveChanges();
+
+                db.Counters.Add(new Counter()
+                {
+                    AddressID = result.ID
+                });
+
+                db.SaveChanges();
+            }
+
+            return Content("נוסף מונה");
         }
 
         private IEnumerable<CounterModel> GetCounters()
