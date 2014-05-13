@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "קישור לקוח";
+    var counters = (List<SelectListItem>) ViewBag.Counters;
+    var users = (List<SelectListItem>) ViewBag.Users;
+}
+
+<div style="direction: rtl;">
+
+    <h2>קישור לקוח למונה</h2>
+
+
+    <div style="margin-top: 10px;">
+        
+        @Html.DropDownList("countersList", counters)
+
+        @Html.DropDownList("usersList", users)
+        
+        <button id="submitButton">קשר לקוח</button>
+    
+    </div>
+    
+    
+</div>
+
+
+
+<script type="text/javascript">
+
+    $('#submitButton').click(function() {
+        var counterId = $('#countersList').val();
+        var userId = $('#usersList').val();
+
+        $.ajax({            
+            url: '/CounterUserReference/AddReference',
+            type: 'POST',
+            data: { 'counterId': counterId, 'userId': userId },
+            success: function() {
+                alert('קישור נוסף בהצלחה');
+                location.reload();
+            }
+        });
+    })
+
+</script>
