@@ -26,6 +26,7 @@ namespace GazProjec.Models
                 mailMessage.From = new MailAddress(@from);
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
+                mailMessage.IsBodyHtml = true;
 
                 foreach (var recip in recipients)
                     mailMessage.To.Add(new MailAddress(recip));
