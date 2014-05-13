@@ -2,16 +2,10 @@
 {
     <text>
         ברוך הבא, @User.Identity.Name
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        @using (Html.BeginForm("LogOff", "Account", new { area = string.Empty }, FormMethod.Post, new { id = "logoutForm" }))
         {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">התנתק</a>
         }
     </text>
-}
-else
-{
-    <ul>
-        <li>@Html.ActionLink("התחבר", "Login", "Account", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
 }
