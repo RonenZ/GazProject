@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Gaz.DAL;
 using Gaz.DAL.DbContexts;
+using Gaz.DAL.Repositories;
 using GazProjec.Areas.Admin.Models;
+using GazProjec.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 
@@ -48,11 +51,28 @@ namespace GazProjec.Areas.Admin.Controllers
             {
                 using (var db = new GazDbContext())
                 {
-                    var result = db.UserComplaints.Single(o => o.ID == comp.ComplaintID);
+                    var repo = new UserComplaintsRepository(db);
 
-                    result.Disable = comp.Disable;
+                    var result = repo.GetByID(comp.ComplaintID);
 
-                    db.SaveChanges();
+                    if (result != null)
+                    {
+                        result.Disable = comp.Disable;
+
+                        try
+                        {
+                            repo.Commit();
+
+                            using (var ms = new MailingService())
+                            {
+                                ms.SendMail_UserComplaintRead(result);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            return Json(new[] { comp }.ToDataSourceResult(request, ModelState));
+                        }
+                    }
                 }
             }
 

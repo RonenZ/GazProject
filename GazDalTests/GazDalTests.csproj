@@ -74,6 +74,10 @@
       <Project>{9b44428a-cc36-4d1e-804e-d866e8c1bec1}</Project>
       <Name>Gaz.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GazProjec\GazProjec.csproj">
+      <Project>{6DA27B99-F6AB-4CE2-8114-DCD07F3B00C4}</Project>
+      <Name>GazProjec</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

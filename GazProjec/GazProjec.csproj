@@ -160,7 +160,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ComplaintsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CounterController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CounterUserReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
@@ -192,6 +191,7 @@
     <Compile Include="Models\ExtendedSimpleMembershipProvider.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\MailingService.cs" />
     <Compile Include="Models\UserBillModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CounterUISerivce.cs" />
