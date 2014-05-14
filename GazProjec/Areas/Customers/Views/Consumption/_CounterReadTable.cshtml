@@ -3,61 +3,80 @@
 @model List<GazProjec.Areas.Customers.Models.CounterReadModel>
 
 @{
-    var chartModel = (ChartModel[])ViewBag.Overroll;
-    var arr = chartModel.Select(a => a.Value).ToArray();
-}
+    var chartModel = (List<ChartModel>)ViewBag.Month;
+    var arr = chartModel.ToArray();
+    var arr2 = arr.Select(a => new {a.Date.Month, a.Date.Year}).ToArray();
 
+    var arrayMonth = new string[arr2.Length];
+
+    for (var i = 0; i < arr2.Length; i++)
+    {
+        arrayMonth[i] = string.Format("{0}/{1}", arr2[i].Month, arr2[i].Year);
+    }
+
+    var yearModel = (List<ChartModel>) ViewBag.Year;    
+    
+}
+<div id="inputList" style="width: 100%;direction: rtl;">
+    <input type="radio" checked="checked" name="chart"  id="singleRadio" style="width: 30px;"/>תקופה לפי ימים
+    <input type="radio"  name="chart" id="monthRadio" style="width: 30px;" />תקופה לפי חודשים
+    <input type="radio"  name="chart" id="yearRadio" style="width: 30px;" />טבלה שנתית
+</div>
 @(Html.Kendo().Chart(Model).Name("chart").CategoryAxis(o => o.Categories(c => c.CreateTime))
       .Series(o => o.Column(a => a.ReadAmount).Aggregate(ChartSeriesAggregate.Sum).Name("צריכה יומית"))
       .Tooltip(true)
-      .Title("צריכה תקופתית")
+      .Title("צריכה יומית לתקופה")
        .ChartArea(chartArea => chartArea
           .Background("transparent"))
           .HtmlAttributes(new { id = "single", style = "width: 100%;"})
           
-          )
-@(Html.Kendo().Chart(chartModel).Name("chart1").CategoryAxis(o => o.Categories(c => c.Date))
-      .Series(o => o.Column(a => a.Value).Name("צריכה מצטברת").Color("Blue"))
-      .Tooltip(true)
-      .Legend(true)
-      .Title("צריכה תקופתית")
-      .ChartArea(chartArea => chartArea
-          .Background("transparent"))
-          .HtmlAttributes(new { id = "overoll", style = "display: none;width: 87%;" })
-          
-          )
+      )
 
-<div style="direction: rtl;"><button id="change">שנה תצוגה</button></div>
+@(Html.Kendo().Chart(arr).Name("monthChart").CategoryAxis(o => o.Categories(arrayMonth))
+    .Series(o => o.Column(a => a.Value).Name("צריכה חודשית"))
+    .Tooltip(true)
 
+          .Title("צריכה חודשית לתקופה ")
+           .ChartArea(chartArea => chartArea
+              .Background("transparent"))
+              .HtmlAttributes(new { id = "month", style = "width: 85%;display:none;" })
+      )
 
-<br />
+@(Html.Kendo().Chart(yearModel).Name("yearChart").CategoryAxis(o => o.Categories(yearModel.Select(a => a.Date.Year)))
+.Series(o => o.Column(a => a.Value).Name("צריכה שנתית"))
+    .Tooltip(true)
 
-<hr/>
+          .Title("צריכה לפי שנים")
+           .ChartArea(chartArea => chartArea
+              .Background("transparent"))
+                  .HtmlAttributes(new { id = "year", style = "width: 85%;display:none;" })
+)
 
-<br />
-
-
-@Html.Kendo().Grid(Model).Name("grid").Columns(c =>
-{
-    c.Bound(o => o.ReadID).Title("מספר קריאה");
-    c.Bound(o => o.CreateTime).Title("תאריך קריאה");
-    c.Bound(o => o.CounterID).Title("מספר מונה");
-    c.Bound(o => o.ReadAmount).Title("סכום");  
-})
-
+<div id="average" style="direction: rtl;">
+    ממוצע יומי לתקופה:
+    @(Model.Sum(o => o.ReadAmount) / Model.Count())
+</div>
 
 <script type="text/javascript">
-    var x = 1;
-
-    $('#change').click(function() {
-        if (x == 1) {
-            x = 2;
-            $('#single').hide();
-            $('#overoll').show();
-        } else {
-            x = 1;
+    $("input[name=chart]:radio").change(function() {
+        var selected = $('input[name=chart]:checked').attr('id');
+        
+        if (selected == 'singleRadio') {
             $('#single').show();
-            $('#overoll').hide();
+            $('#month').hide();
+            $('#year').hide();
+        } else if (selected == 'monthRadio') {
+            $('#single').hide();
+            $('#month').show();
+            $('#year').hide();
         }
-    });
+        else if (selected == 'yearRadio') {
+            $('#single').hide();
+            $('#month').hide();
+            $('#year').show();
+        } else {
+            alert('Error');
+        }
+
+    })
 </script>

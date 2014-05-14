@@ -160,6 +160,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ComplaintsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CounterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CounterUserReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />

@@ -21,15 +21,19 @@ namespace GazProjec.Areas.Customers.Controllers
 
         public ActionResult Index()
         {
-            return View(this.GetListOfCounters(User.Identity.Name));
+            return View(GetListOfCounters(User.Identity.Name));
         }
 
         //GET: 
-
-
         public ActionResult GetConsumptionTable(int counterId, DateTime startTime, DateTime endTime)
         {
-            return PartialView("_CounterReadTable", GetConsumptionData(counterId, startTime, endTime));
+            var data = GetConsumptionData(counterId, startTime, endTime);
+
+            ViewBag.Month = GetValueByMonth(data);
+
+            ViewBag.Year = GetValueByYear(GetConsumptionData(counterId, new DateTime(1900, 1, 1), DateTime.Now));
+
+            return PartialView("_CounterReadTable", data);
         }
 
 
@@ -106,6 +110,49 @@ namespace GazProjec.Areas.Customers.Controllers
                     Text = CounterUiSerivce.GetDetails(counter)
                 }).ToList();
             }
+        }
+
+        private List<ChartModel> GetValueByMonth(List<CounterReadModel> data)
+        {
+            var dataByYear = data.GroupBy(o => o.CreateTime.Year);
+
+            var list = new List<ChartModel>();
+
+            foreach (var item in dataByYear)
+            {
+                var byMonth = item.GroupBy(o => o.CreateTime.Month);
+
+                foreach (var month in byMonth)
+                {
+                    list.Add(new ChartModel
+                    {
+                        Date = month.First().CreateTime,
+                        Value = month.Sum(o => o.ReadAmount)
+                    });
+                }
+
+            }
+
+            return list.OrderBy(o => o.Date).ToList();
+        }
+
+        private List<ChartModel> GetValueByYear(List<CounterReadModel> data)
+        {
+
+            var list = new List<ChartModel>();
+
+            var dataByYear = data.GroupBy(o => o.CreateTime.Year);
+
+            foreach (var year in dataByYear)
+            {
+                list.Add(new ChartModel
+                {
+                    Date = year.First().CreateTime,
+                    Value = year.Sum(o => o.ReadAmount)
+                });
+            }
+
+            return list.OrderBy(o => o.Date).ToList();
         }
 
 
