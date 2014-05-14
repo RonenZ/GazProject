@@ -38,7 +38,7 @@ namespace Gaz.DAL.Repositories
         public UserBill GetBillByDate(int counterId, DateTime date)
         {
             var nextMonth = date.AddMonths(1);
-            return DbSet.FirstOrDefault(f => f.CreateTime >= date && f.CreateTime <= nextMonth);
+            return DbSet.FirstOrDefault(f => f.CreateTime >= date && f.CreateTime <= nextMonth && f.CounterID == counterId);
         }
 
         /// <summary>

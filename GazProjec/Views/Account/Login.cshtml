@@ -8,7 +8,7 @@
     <h1 style="direction:rtl;float:right;margin: 0 47%;">@ViewBag.Title.</h1>
 </hgroup>
 
-<section id="loginForm">
+<section id="loginForm" >
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)

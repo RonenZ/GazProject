@@ -71,12 +71,16 @@ namespace GazProjec.Areas.Customers.Controllers
                 var repo = new BillsRepository(db);
                 var userBill = repo.GetBillByDate(counterId, date);
 
+                var user = db.Users.SingleOrDefault(o => o.Username == User.Identity.Name);
+
+                var name = user != null ? string.Format("{0} {1}", user.FirstName, user.LastName) : User.Identity.Name;
+
                 if (userBill == null)
                 {
                     return Content("no image");
                 }
 
-                userBillModel = new UserBillModel(User.Identity.Name, userBill.BillAmount.ToString(CultureInfo.InvariantCulture),
+                userBillModel = new UserBillModel(name, userBill.BillAmount.ToString(CultureInfo.InvariantCulture),
                     userBill.CreateTime, userBill.ID.ToString(CultureInfo.InvariantCulture), userBill.CounterID.ToString());
             }
 
