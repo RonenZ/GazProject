@@ -23,7 +23,8 @@
       c.Bound(o => o.NotificationDescription).Width(650).Title("הודעה");
       c.Bound(o => o.UserName).Title("שם משתמש");      
       c.Bound(o => o.UserID).Title("מס משתמש");      
-      c.Bound(o => o.NotificationID).Title("מספר התראה");      
+      c.Bound(o => o.NotificationID).Title("מספר התראה");
+      c.Bound(o => o.Disabled).Title("ביטול");
       c.Command(o => o.Edit().Text("עריכה")).Title("פעולות");
   })  
   .DataSource(d => d.Ajax().Read("ReadNotifications", "Notifications", new { Area = "Admin" })

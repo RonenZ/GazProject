@@ -90,6 +90,16 @@ namespace GazProjec.Areas.Admin.Controllers
         {
             var model = new UserCounterModel(userID);
 
+            using (var db = new GazDbContext())
+            {
+                for (var index = 0; index < model.Counters.Count; index++)
+                {
+                    var counter = model.Counters[index];
+                    var reads = db.CounterReads.Where(o => o.CounterID == counter.CounterID);
+                    model.Counters[index].SumReads = reads.Select(o => o.ReadAmount).Sum();
+                }
+            }
+
             return PartialView("~/Areas/Admin/Views/Counter/_UserCounter.cshtml", model);
         }
 

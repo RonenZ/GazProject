@@ -12,7 +12,7 @@
     c.Bound(o => o.FirstName).Title("שם פרטי").Width(150);
     c.Bound(o => o.LastName).Title("שם משפחה").Width(150);
     c.Bound(o => o.Email).Title("דואר אלקטרוני").Width(150);
-}).HtmlAttributes(new {id = "mainData"}).Scrollable()
+}).HtmlAttributes(new {id = "mainData"}).Scrollable().Filterable()
 
 
 <div style="text-align: center;">
